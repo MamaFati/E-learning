@@ -4,13 +4,8 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot (195)](https://github.com/MamaFati/E-learning/assets/104836963/b1271191-591d-4332-8717-ca87ee77c37f)
+![Screenshot (196)](https://github.com/MamaFati/E-learning/assets/104836963/13d27d9b-2a85-4606-970a-9b058a8ce36e)
+![Screenshot (197)](https://github.com/MamaFati/E-learning/assets/104836963/10a5b7f3-4ad6-472a-97f7-2a3f897dc14a)
+![Screenshot (198)](https://github.com/MamaFati/E-learning/assets/104836963/994ff48b-796e-4f13-90ab-95285c8f4691)
+![Screenshot (199)](https://github.com/MamaFati/E-learning/assets/104836963/f85baee5-a4b8-4097-99f9-4136814c95aa)
