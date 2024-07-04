@@ -15,12 +15,13 @@ class CustomTextArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         child: TextField(
           // controller: controller,
           maxLines: maxLines,
           decoration: InputDecoration(
-            // border: InputBorder.none,
+             filled: true,
+            fillColor: Colors.white,
             hintText: hintText,
             hintStyle: TextStyle(color: Colors.grey, fontSize: 12),
             enabledBorder: OutlineInputBorder(

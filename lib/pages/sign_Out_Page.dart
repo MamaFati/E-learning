@@ -1,4 +1,5 @@
 import 'package:e_learning/component/textArea.dart';
+import 'package:e_learning/pages/sign_In_Page.dart';
 import 'package:flutter/material.dart';
 
 class SignOutPage extends StatelessWidget {
@@ -71,17 +72,27 @@ class SignOutPage extends StatelessWidget {
                   ),
                 ),
                 //
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(bottom: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("ALREADY HAVE ACCOUNT?"),
-                      Text(
-                        " SIGN IN",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline,
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignInPage()),
+                          );
+                        },
+                        child: const Text(
+                          " SIGN IN",
+                          style: TextStyle(
+                             
+                            decoration: TextDecoration.underline,
+                            color: Colors.blue,
+                          ),
                         ),
                       ),
                     ],

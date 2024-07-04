@@ -31,10 +31,13 @@ class _welcomePageState extends State<welcomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Text
-              const Text(
-                "AFRICA-CAN-DO E-LEARNING",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              const Padding(
+                padding: EdgeInsets.only(top:10.0),
+                child: Text(
+                  "AFRICA-CAN-DO E-LEARNING",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                ),
               ),
               // image
               Padding(
@@ -75,9 +78,9 @@ class _welcomePageState extends State<welcomePage> {
                     ],
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
-                    child: const Text(
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                    child: Text(
                       "Get Started",
                       style: TextStyle(
                           // color: Colors.white,
