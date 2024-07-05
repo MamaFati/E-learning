@@ -34,7 +34,7 @@ class signPage extends StatelessWidget {
                 child: CustomButton(
                   text: "LOG IN",
                   color: Colors.green[400]!,
-                  onPressed: () => Navigator.push(
+                  onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => SignInPage()),
                   ),
@@ -44,10 +44,12 @@ class signPage extends StatelessWidget {
               CustomButton(
                 text: "SIGN UP",
                 color: const Color.fromARGB(255, 1, 138, 156),
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignOutPage()),
-                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignOutPage()),
+                  );
+                },
               ),
             ],
           ),

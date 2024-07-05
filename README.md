@@ -9,3 +9,7 @@ A new Flutter project.
 ![Screenshot (197)](https://github.com/MamaFati/E-learning/assets/104836963/10a5b7f3-4ad6-472a-97f7-2a3f897dc14a)
 ![Screenshot (198)](https://github.com/MamaFati/E-learning/assets/104836963/994ff48b-796e-4f13-90ab-95285c8f4691)
 ![Screenshot (199)](https://github.com/MamaFati/E-learning/assets/104836963/f85baee5-a4b8-4097-99f9-4136814c95aa)
+
+# 05-07-2024
+
+Made some changes to the sign-In page and also added firebase for user logging with google, X and Apple account

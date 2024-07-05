@@ -1,3 +1,5 @@
+import 'package:e_learning/component/bottoms.dart';
+import 'package:e_learning/component/square_tile.dart';
 import 'package:e_learning/component/textArea.dart';
 import 'package:e_learning/pages/sign_Out_Page.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,12 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   bool? isChecked = false;
+  // Text Editing controllers
+  final userNameControl = TextEditingController();
+  final passwordControl = TextEditingController();
+
+  // Sign user In
+  void signUserIn() {}
 
   @override
   Widget build(BuildContext context) {
@@ -29,133 +37,157 @@ class _SignInPageState extends State<SignInPage> {
           ),
         ),
         width: double.infinity,
-        child: SingleChildScrollView(
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              // Text
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
-                child: Text(
-                  "SIGN IN",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-              ),
-              //  Avator Image
-              Image.asset('lib/assets/images1/0000 1.png'),
-              // user name
-              CustomTextArea(
-                hintText: 'USERNAME OR EMAIL',
-              ),
-              // user password
-              CustomTextArea(
-                hintText: 'PASSWORD',
-              ),
-              //  const SizedBox(height: 20),
-              // button
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'LOG IN',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 100),
-                  backgroundColor: Colors.green[400],
-                ),
-              ),
-              // Row for remember me and forgot password
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    // Avator Image
+                    Image.asset(
+                      'lib/assets/images1/0000 1.png',
+                      width: 150,
+                    ),
+                    // Welcome message
+                    Text(
+                      "Welcome Back",
+                      style: TextStyle(color: Colors.grey[700], fontSize: 26),
+                    ),
+                    // user name
+                    CustomTextArea(
+                      hintText: 'USERNAME OR EMAIL',
+                      controller: userNameControl,
+                      obscureText: false,
+                    ),
+                    // user password
+                    CustomTextArea(
+                      hintText: 'PASSWORD',
+                      controller: passwordControl,
+                      obscureText: true,
+                    ),
+                    const SizedBox(height: 10),
+                    // Row for remember me and forgot password
                     Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 11.0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Checkbox(
-                            tristate: true,
-                            value: isChecked,
-                            onChanged: (bool? value) {
-                              setState(() {
-                                isChecked = value;
-                              });
-                            },
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child: Row(
+                              children: [
+                                Checkbox(
+                                  tristate: true,
+                                  value: isChecked,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      isChecked = value;
+                                    });
+                                  },
+                                ),
+                                // Text
+                                const Text(
+                                  "REMEMBER ME",
+                                  style: TextStyle(),
+                                ),
+                              ],
+                            ),
                           ),
-                          // Text
-                          Text(
-                            "REMEMBER ME",
-                            style: TextStyle(),
+                          const Text(
+                            "Forgot password?",
+                            style: TextStyle(
+                              color: Colors.blue,
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    Text(
-                      "Forgot password?",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
+                    // button
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5.0, bottom: 20),
+                      child: CustomButton(
+                        text: "LOG IN",
+                        color: Colors.green[400]!,
+                        onTap: signUserIn,
+                      ),
+                    ),
+                    // OR#####
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Divider(
+                              thickness: 0.7,
+                              color: Colors.grey[400],
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Text(
+                              "Or continue with",
+                              style: TextStyle(color: Colors.grey[700]),
+                            ),
+                          ),
+                          Expanded(
+                            child: Divider(
+                              thickness: 0.5,
+                              color: Colors.grey[400],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          squareTile(
+                              imagePath: 'lib/assets/images1/HNFVYH 1.png'),
+                          SizedBox(width: 10),
+                          //  image2
+                          squareTile(
+                              imagePath: 'lib/assets/images1/GYVHG 1.png'),
+                          SizedBox(width: 10), // image3
+                          squareTile(imagePath: 'lib/assets/images1/ZDZ 1.png'),
+                          SizedBox(width: 10),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("DON'T HAVE AN ACCOUNT?"),
+                          // link to signUp page
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignOutPage()),
+                              );
+                            },
+                            child: const Text(
+                              " SIGN UP",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
-              // OR#####
-              Text("-----OR-----"),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    // icons.. google Apple X
-                    Image.asset(
-                      'lib/assets/images1/HNFVYH 1.png',
-                      width: 35,
-                    ),
-                    Image.asset(
-                      'lib/assets/images1/GYVHG 1.png',
-                      width: 35,
-                    ),
-                    Image.asset(
-                      'lib/assets/images1/ZDZ 1.png',
-                      width: 35,
-                    ),
-                  ],
-                ),
-              ),
-              //
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("DON'T HAVE AN ACCOUNT?"),
-                    // link to signUp page
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignOutPage()),
-                        );
-                      },
-                      child: const Text(
-                        " SIGN UP",
-                        style: TextStyle(
-                          
-                          decoration: TextDecoration.underline,
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
