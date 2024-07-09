@@ -2,8 +2,20 @@ import 'package:e_learning/component/textArea.dart';
 import 'package:e_learning/pages/sign_In_Page.dart';
 import 'package:flutter/material.dart';
 
-class SignOutPage extends StatelessWidget {
+class SignOutPage extends StatefulWidget {
   const SignOutPage({super.key});
+
+  @override
+  State<SignOutPage> createState() => _SignOutPageState();
+}
+
+class _SignOutPageState extends State<SignOutPage> {
+  final userNameControl1 = TextEditingController();
+  final userLastNameControl = TextEditingController();
+  final userEmailControl = TextEditingController();
+  final userNumberControl = TextEditingController();
+  final userPasswordControl = TextEditingController();
+  final userConfirmPasswordControl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,24 +48,36 @@ class SignOutPage extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 // Input section
-                const CustomTextArea(
+                CustomTextArea(
                   hintText: 'FRISTNAME',
+                  controller: userNameControl1,
+                  obscureText: false,
                 ),
-                const CustomTextArea(
+                CustomTextArea(
                   hintText: 'LASTNAME',
+                  controller: userLastNameControl,
+                  obscureText: false,
                 ),
-                const CustomTextArea(
+                CustomTextArea(
                   hintText: 'EMAIL',
+                  controller: userEmailControl,
+                  obscureText: false,
                 ),
 
-                const CustomTextArea(
+                CustomTextArea(
                   hintText: 'PHONE NUMBER',
+                  controller: userNumberControl,
+                  obscureText: false,
                 ),
-                const CustomTextArea(
+                CustomTextArea(
                   hintText: 'PASSWORD',
+                  controller: userPasswordControl,
+                  obscureText: true,
                 ),
-                const CustomTextArea(
+                CustomTextArea(
                   hintText: 'CONFIRM PASSWORD',
+                  controller: userConfirmPasswordControl,
+                  obscureText: true,
                 ),
                 // buttom
                 Padding(
@@ -89,7 +113,6 @@ class SignOutPage extends StatelessWidget {
                         child: const Text(
                           " SIGN IN",
                           style: TextStyle(
-                             
                             decoration: TextDecoration.underline,
                             color: Colors.blue,
                           ),
