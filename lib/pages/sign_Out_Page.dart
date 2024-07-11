@@ -1,4 +1,6 @@
+import 'package:e_learning/component/bottoms.dart';
 import 'package:e_learning/component/textArea.dart';
+import 'package:e_learning/pages/HomePage.dart';
 import 'package:e_learning/pages/sign_In_Page.dart';
 import 'package:flutter/material.dart';
 
@@ -82,17 +84,15 @@ class _SignOutPageState extends State<SignOutPage> {
                 // buttom
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30.0),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      'SIGN UP',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 100),
-                        backgroundColor: Colors.green[400]),
+                  child: CustomButton(
+                    text: "SIGN UP",
+                    color: const Color.fromARGB(255, 1, 138, 156),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                      );
+                    },
                   ),
                 ),
                 //
