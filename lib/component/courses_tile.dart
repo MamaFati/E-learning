@@ -13,7 +13,7 @@ class CoursesTile extends StatelessWidget {
       width: 300,
       margin: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.grey[100],
         
         borderRadius: BorderRadius.circular(12.0),
         boxShadow: [

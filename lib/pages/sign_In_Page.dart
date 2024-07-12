@@ -1,4 +1,5 @@
 import 'package:e_learning/component/bottoms.dart';
+import 'package:e_learning/component/dialogBox.dart';
 import 'package:e_learning/component/square_tile.dart';
 import 'package:e_learning/component/textArea.dart';
 import 'package:e_learning/pages/sign_Out_Page.dart';
@@ -16,6 +17,7 @@ class _SignInPageState extends State<SignInPage> {
   // Text Editing controllers
   final userNameControl = TextEditingController();
   final passwordControl = TextEditingController();
+  final _controller = TextEditingController();
 
   // Sign user In
   void signUserIn() {}
@@ -94,12 +96,25 @@ class _SignInPageState extends State<SignInPage> {
                               ],
                             ),
                           ),
-                          const Text(
-                            "Forgot password?",
-                            style: TextStyle(
-                              color: Colors.blue,
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => dailogBox(
+                                          controller: _controller,
+                                          onCancel: () =>
+                                              Navigator.of(context).pop(),
+                                        )),
+                              );
+                            },
+                            child: Text(
+                              "Forgot password?",
+                              style: TextStyle(
+                                color: Colors.blue,
+                              ),
                             ),
-                          ),
+                          )
                         ],
                       ),
                     ),
