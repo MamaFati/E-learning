@@ -1,5 +1,5 @@
 import 'package:e_learning/component/diaBottoms.dart';
-import 'package:e_learning/pages/RetrivePassPage.dart';
+import 'package:e_learning/pages/verifyCodePage.dart';
 import 'package:flutter/material.dart';
 // import 'package:todo_app/util/buttoms.dart';
 
@@ -43,7 +43,7 @@ class dailogBox extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => forgotPass()),
+                      MaterialPageRoute(builder: (context) => VerifyCode()),
                     );
                   },
                 ),
