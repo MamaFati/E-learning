@@ -13,3 +13,6 @@ A new Flutter project.
 # 05-07-2024
 
 Made some changes to the sign-In page and also added firebase for user logging with google, X and Apple account
+###
+![Screenshot (207)](https://github.com/user-attachments/assets/38e1ff75-4951-4796-8d73-2ab6da5f215f)
+![Screenshot (208)](https://github.com/user-attachments/assets/636ffca0-ebbf-4e39-84a0-90652a657b20)
