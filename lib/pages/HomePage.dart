@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     coursesPage(),
     myCourse(),
-    wishListPage(),
+    WishListPage(),
     profilePage(),
   ];
   @override

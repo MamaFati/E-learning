@@ -15,12 +15,11 @@ class _VerifyCode extends State<VerifyCode> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+          title: Text(
             "VERIFY CODE ",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-        backgroundColor: Color(0xFFFBFFFF)
-      ),
+          backgroundColor: Color(0xFFFBFFFF)),
       body: Container(
           decoration: BoxDecoration(
             color: Color(0xFF9BE5DD),
@@ -34,8 +33,13 @@ class _VerifyCode extends State<VerifyCode> {
             children: [
               // Text
               Padding(
-                padding: const EdgeInsets.only(bottom:20.0),
-                child: Text("Enter Verification Code", style: TextStyle(fontSize: 30,),),
+                padding: const EdgeInsets.all(25.0),
+                child: Text(
+                  "Enter Verification Code From Your Email",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
               ),
               // input
               Row(
@@ -48,6 +52,9 @@ class _VerifyCode extends State<VerifyCode> {
                   numField(),
                 ],
               ),
+              Text("Enter 6 digit verification code sent to your email",
+                  style: TextStyle(color: Colors.grey)),
+              Text("Resend", style: TextStyle(color: Colors.blue)),
               // rest buttom
               Padding(
                 padding: const EdgeInsets.only(top: 40.0, bottom: 20),

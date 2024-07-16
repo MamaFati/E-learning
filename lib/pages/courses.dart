@@ -1,6 +1,7 @@
 import 'package:e_learning/component/courses_tile.dart';
 import 'package:e_learning/models/course.dart';
 import 'package:e_learning/models/coursesModel.dart';
+import 'package:e_learning/pages/AllCoursesPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +13,11 @@ class coursesPage extends StatefulWidget {
 }
 
 class _couresePageState extends State<coursesPage> {
+  // add heels to carts
+  void addItemToWishList(main_courses Courses) {
+    Provider.of<courseModel>(context, listen: false).addCoursesToWishList(Courses);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<courseModel>(
@@ -69,7 +75,16 @@ class _couresePageState extends State<coursesPage> {
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
-                    Text("All courses", style: TextStyle(color: Colors.blue)),
+                    InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => allCourses(),
+                              ));
+                        },
+                        child: Text("All courses",
+                            style: TextStyle(color: Colors.blue))),
                   ],
                 ),
               ),
@@ -78,13 +93,15 @@ class _couresePageState extends State<coursesPage> {
                   child: SizedBox(
                 // height: 100,
                 child: ListView.builder(
-                    itemCount: value.getCoursesList().length,
+                    itemCount: value.getCoursesList(false).length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: ((context, index) {
                       // Get a course from the list
-                      main_courses Courses = value.getCoursesList()[index];
+                      main_courses Courses = value.getCoursesList(false)[index];
                       return CoursesTile(
                         Courses: Courses,
+                        isAllCoursesPage: false,
+                        onTap: () => addItemToWishList(Courses),
                       );
                     })),
               )),

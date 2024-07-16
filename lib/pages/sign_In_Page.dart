@@ -2,6 +2,7 @@ import 'package:e_learning/component/bottoms.dart';
 import 'package:e_learning/component/dialogBox.dart';
 import 'package:e_learning/component/square_tile.dart';
 import 'package:e_learning/component/textArea.dart';
+import 'package:e_learning/pages/HomePage.dart';
 import 'package:e_learning/pages/sign_Out_Page.dart';
 import 'package:flutter/material.dart';
 
@@ -124,7 +125,13 @@ class _SignInPageState extends State<SignInPage> {
                       child: CustomButton(
                         text: "LOG IN",
                         color: Colors.green[400]!,
-                        onTap: signUserIn,
+                        onTap:  () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                     
+                      );
+                         }
                       ),
                     ),
                     // OR#####
