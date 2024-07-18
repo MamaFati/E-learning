@@ -99,7 +99,7 @@ class _couresePageState extends State<coursesPage> {
                       // Get a course from the list
                       main_courses Courses = value.getCoursesList(false)[index];
                       return CoursesTile(
-                        Courses: Courses,
+                        course: Courses,
                         isAllCoursesPage: false,
                         onTap: () => addItemToWishList(Courses),
                       );

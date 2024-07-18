@@ -1,41 +1,75 @@
+import 'package:e_learning/pages/detailedPages/digitalMarketingPage.dart';
+import 'package:e_learning/pages/detailedPages/FullStackPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:e_learning/models/course.dart';
+ 
 
 class CoursesTile extends StatelessWidget {
-  final main_courses Courses;
+  final main_courses course;
   final bool isAllCoursesPage;
   void Function()? onTap;
 
   CoursesTile({
     super.key,
-    required this.Courses,
+    required this.course,
     required this.isAllCoursesPage,
-    required this.onTap
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width:
-          isAllCoursesPage ? double.infinity : 300, // Full width for row layout
-      margin: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        color: isAllCoursesPage ? Colors.white : Colors.grey[100],
-        borderRadius: BorderRadius.circular(12.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 5.0,
-            spreadRadius: 2.0,
-            offset: Offset(0, 2),
+    return GestureDetector(
+      onTap: () {
+        navigateToDetailPage(context, course);
+      },
+      child:  SingleChildScrollView(
+        child: Container(
+          width: isAllCoursesPage
+              ? double.infinity
+              : 300, // Full width for row layout
+          margin: EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+            color: isAllCoursesPage ? Colors.white : Colors.grey[100],
+            borderRadius: BorderRadius.circular(12.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 5.0,
+                spreadRadius: 2.0,
+                offset: Offset(0, 2),
+              ),
+            ],
           ),
-        ],
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: isAllCoursesPage ? buildRowLayout() : buildColumnLayout(),
+          ),
+        ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: isAllCoursesPage ? buildRowLayout() : buildColumnLayout(),
-      ),
+    );
+  }
+
+  void navigateToDetailPage(BuildContext context, main_courses course) {
+    Widget detailPage;
+    switch (course.courseName) {
+      case 'Full Stack software Developer with a Portfolio':
+        detailPage = FullStackDetailPage(course: course);
+        break;
+      case 'Become A Digital Marketer, With Mentorship ':
+        detailPage = digitalMarketingPage(course: course);
+        break;
+      case 'Fundermentals Of Cyber security':
+        detailPage = digitalMarketingPage(course: course);
+        break;
+      default:
+        detailPage = digitalMarketingPage(
+            course: course); // Default to web development page
+    }
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => detailPage),
     );
   }
 
@@ -43,7 +77,7 @@ class CoursesTile extends StatelessWidget {
     return Row(
       children: [
         Image.asset(
-          Courses.ImagePath,
+          course.ImagePath,
           height: 100.0,
           width: 100.0,
           fit: BoxFit.cover,
@@ -55,7 +89,7 @@ class CoursesTile extends StatelessWidget {
             children: [
               // Course name
               Text(
-                Courses.courseName,
+                course.courseName,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20.0,
@@ -65,7 +99,7 @@ class CoursesTile extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
-                  Courses.Description,
+                  course.Description,
                   style: TextStyle(
                     color: Colors.black87,
                   ),
@@ -76,7 +110,7 @@ class CoursesTile extends StatelessWidget {
                 children: [
                   // Rating stars
                   RatingBar.builder(
-                    initialRating: Courses.rating,
+                    initialRating: course.rating,
                     minRating: 1,
                     direction: Axis.horizontal,
                     allowHalfRating: true,
@@ -94,14 +128,14 @@ class CoursesTile extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 15.0),
                     child: Text(
-                      Courses.isFree ? "Free" : "Paid",
+                      course.isFree ? "Free" : "Paid",
                       style: TextStyle(
-                        color: Courses.isFree ? Colors.green : Colors.red,
+                        color: course.isFree ? Colors.green : Colors.red,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  // Add bottom to enable user add courses to their wish list
+                  // Add button to enable user to add courses to their wish list
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0),
                     child: GestureDetector(
@@ -133,7 +167,7 @@ class CoursesTile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Image.asset(
-          Courses.ImagePath,
+          course.ImagePath,
           height: 200.0,
         ),
         Column(
@@ -141,7 +175,7 @@ class CoursesTile extends StatelessWidget {
           children: [
             // Course name
             Text(
-              Courses.courseName,
+              course.courseName,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0,
@@ -151,7 +185,7 @@ class CoursesTile extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
-                Courses.Description,
+                course.Description,
                 style: TextStyle(
                   color: Colors.grey,
                 ),
@@ -163,7 +197,7 @@ class CoursesTile extends StatelessWidget {
               children: [
                 // Rating stars
                 RatingBar.builder(
-                  initialRating: Courses.rating,
+                  initialRating: course.rating,
                   minRating: 1,
                   direction: Axis.horizontal,
                   allowHalfRating: true,
@@ -181,9 +215,9 @@ class CoursesTile extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: Text(
-                    Courses.isFree ? "Free" : "Paid",
+                    course.isFree ? "Free" : "Paid",
                     style: TextStyle(
-                      color: Courses.isFree ? Colors.green : Colors.red,
+                      color: course.isFree ? Colors.green : Colors.red,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

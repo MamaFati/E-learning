@@ -52,7 +52,7 @@ class _allCoursesState extends State<allCourses> {
             itemCount: courses.length,
             itemBuilder: (context, index) {
               return CoursesTile(
-                Courses: courses[index],
+                course: courses[index],
                 isAllCoursesPage: true,
                 onTap: () => addItemToWishList(courses[index]),
               );
