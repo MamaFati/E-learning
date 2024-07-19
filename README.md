@@ -16,3 +16,7 @@ Made some changes to the sign-In page and also added firebase for user logging w
 ###
 ![Screenshot (207)](https://github.com/user-attachments/assets/38e1ff75-4951-4796-8d73-2ab6da5f215f)
 ![Screenshot (208)](https://github.com/user-attachments/assets/636ffca0-ebbf-4e39-84a0-90652a657b20)
+####
+![Screenshot (210)](https://github.com/user-attachments/assets/3a525047-de36-4b88-bbcc-83c7395cbdb6)
+![Screenshot (212)](https://github.com/user-attachments/assets/c4872431-9670-4c56-8e24-3a2d4e905992)
+![Screenshot_20240719-210601](https://github.com/user-attachments/assets/c7194324-d69c-4923-b4a1-c14ae024edf6)
