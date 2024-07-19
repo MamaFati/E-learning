@@ -1,11 +1,11 @@
 import 'package:e_learning/component/bottoms.dart';
 import 'package:e_learning/models/course.dart';
-import 'package:e_learning/pages/course_page.dart';
-
+import 'package:e_learning/pages/mainCoursesPages/fullStackDevalopmetCourses.dart';
 import 'package:flutter/material.dart';
 
 class FullStackDetailPage extends StatelessWidget {
   final main_courses course;
+
   FullStackDetailPage({super.key, required this.course});
 
   final List<Map<String, String>> faqList = [
@@ -111,7 +111,8 @@ class FullStackDetailPage extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => CoursePage()),
+                      MaterialPageRoute(
+                          builder: (context) => FullStackCourses()),
                     );
                   },
                 ),

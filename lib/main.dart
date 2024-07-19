@@ -1,3 +1,4 @@
+import 'package:e_learning/models/chapterModelRepo.dart';
 import 'package:e_learning/models/coursesModel.dart';
 import 'package:e_learning/pages/welcome_page.dart';
 // import 'package:firebase_core/firebase_core.dart';
@@ -14,9 +15,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => courseModel(),
-      builder: (context, child) =>  MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => courseModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CourseRepository(),
+        )
+      ],
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: welcomePage(),
         theme: ThemeData(
