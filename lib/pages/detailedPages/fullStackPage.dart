@@ -1,7 +1,9 @@
 import 'package:e_learning/component/bottoms.dart';
 import 'package:e_learning/models/course.dart';
+import 'package:e_learning/models/coursesModel.dart';
 import 'package:e_learning/pages/mainCoursesPages/fullStackDevalopmetCourses.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FullStackDetailPage extends StatelessWidget {
   final main_courses course;
@@ -22,7 +24,6 @@ class FullStackDetailPage extends StatelessWidget {
       "question": "Is there a certification?",
       "answer": "Yes, you will receive a certification upon completion."
     },
-    // Add more questions and answers as needed
   ];
 
   @override
@@ -109,6 +110,11 @@ class FullStackDetailPage extends StatelessWidget {
                   text: "ENROLL",
                   color: const Color.fromARGB(255, 1, 138, 156),
                   onTap: () {
+                    // Add the course to the wishlist
+                    Provider.of<courseModel>(context, listen: false)
+                        .addCoursesToWishList(course);
+
+                    // Navigate to FullStackCourses page (or any other page)
                     Navigator.push(
                       context,
                       MaterialPageRoute(

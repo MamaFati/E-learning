@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:e_learning/utils/chaptersTab.dart';
 import 'package:e_learning/utils/fileTap.dart';
 import 'package:e_learning/pages/discussionsTab.dart';
-// import 'package:e_learning/models/course_model.dart'; // Adjust the path if necessary
 
 class CoursePage extends StatelessWidget {
-  final  Course course;
+  final Course course;
 
   CoursePage({Key? key, required this.course}) : super(key: key);
 
@@ -44,8 +43,8 @@ class CoursePage extends StatelessWidget {
                 videoUrls: course.videoUrls,
                 completed: course.completed,
               ),
-              fileTap(), 
-              discussionsTab(), 
+              fileTap(),
+              discussionsTab(),
             ],
           ),
         ),

@@ -1,10 +1,12 @@
 import 'package:e_learning/models/chapterModelRepo.dart';
+import 'package:e_learning/models/course.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:e_learning/component/course_page.dart';
 // import 'package:e_learning/repositories/course_repository.dart'; // Ensure correct path
 
 class FullStackCourses extends StatelessWidget {
+  
   FullStackCourses({Key? key}) : super(key: key);
 
   @override
@@ -17,7 +19,7 @@ class FullStackCourses extends StatelessWidget {
     // Build the widget
     return Scaffold(
       body: Container(
-         decoration: BoxDecoration(
+         decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Color(0xFFFBFFFF), // Light cyan

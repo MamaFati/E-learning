@@ -112,4 +112,9 @@ class courseModel extends ChangeNotifier {
     userWish.remove(course);
     notifyListeners();
   }
+  // get selected courses
+  void getSelectedCourses(main_courses course) {
+    userWish.add(course);
+    notifyListeners();
+  }
 }
