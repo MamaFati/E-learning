@@ -1,4 +1,5 @@
 import 'package:e_learning/pages/sign_page.dart';
+import 'package:e_learning/pages/welcome_veiw.dart';
 import 'package:flutter/material.dart';
 
 class welcomePage extends StatefulWidget {
@@ -9,6 +10,28 @@ class welcomePage extends StatefulWidget {
 }
 
 class _welcomePageState extends State<welcomePage> {
+  bool _isLoading = true; // Flag to control the loading indicator visibility
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Simulate a loading delay
+    Future.delayed(const Duration(seconds: 5), () {
+      setState(() {
+        _isLoading = false; // Update the flag to hide the loading indicator
+      });
+
+      // Navigate to the next page
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SliderPage(),
+        ),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,74 +47,58 @@ class _welcomePageState extends State<welcomePage> {
             end: Alignment.bottomCenter,
             begin: Alignment.topLeft,
           )),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Text
-                const Padding(
-                  padding: EdgeInsets.only(top: 10.0),
-                  child: Text(
-                    "AFRICA-CAN-DO E-LEARNING",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                  ),
-                ),
-                // image
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 50.0),
-                  child: Image.asset('lib/assets/images1/3322 1.png'),
-                ),
-                // Description
-                const Text(
-                  "Engage In Effective, Interactive Learning ",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                // loading
-                const Padding(
-                  padding: EdgeInsets.only(top: 70.0, bottom: 10),
-                  child: Text(
-                    "Loading.....",
-                    style: TextStyle(fontSize: 15),
-                  ),
-                ),
-                // buttom
-                GestureDetector(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => signPage(),
-                      )),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xFF9BE5DD),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2), // Shadow color
-                          spreadRadius: 5, // Spread radius
-                          blurRadius: 7, // Blur radius
-                          offset: Offset(0, 3),
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+          child: Stack(
+            children: [
+              // Main content
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    // Text
+                    const Padding(
+                      padding: EdgeInsets.only(top: 10.0),
                       child: Text(
-                        "Get Started",
+                        "AFRICA-CAN-DO E-LEARNING",
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                            // color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
+                            fontWeight: FontWeight.bold, fontSize: 30),
+                      ),
+                    ),
+                    // Image
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 50.0),
+                      child: Image.asset('lib/assets/images1/3322 1.png'),
+                    ),
+                    // Description
+                    Padding(
+                      padding: const EdgeInsets.only(top:50.0),
+                      child: const Text(
+                        "Engage In Effective, Interactive Learning ",
+                        textAlign: TextAlign.center,
+                        style:
+                            TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                     
+                  ],
+                ),
+              ),
+              // Loading indicator
+              if (_isLoading)
+                Center(
+                  child: Container(
+                  margin: EdgeInsets.only(top:50),
+                     
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Color(0xFF9BE5DD)),
                       ),
                     ),
                   ),
-                )
-              ],
-            ),
+                ),
+            ],
           ),
         ),
       ),
