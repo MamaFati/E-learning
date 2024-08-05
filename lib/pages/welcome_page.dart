@@ -1,5 +1,5 @@
-import 'package:e_learning/pages/sign_page.dart';
 import 'package:e_learning/pages/welcome_veiw.dart';
+import 'package:e_learning/theme/theme_data.dart';
 import 'package:flutter/material.dart';
 
 class welcomePage extends StatefulWidget {
@@ -38,15 +38,8 @@ class _welcomePageState extends State<welcomePage> {
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Color(0xFFFBFFFF), // Light cyan
-              Color(0xFFFFFFFF), // White
-              Color(0xFF9BE5DD), // Light turquoise
-            ],
-            end: Alignment.bottomCenter,
-            begin: Alignment.topLeft,
-          )),
+            gradient: AppGradients.mainGradient,
+          ),
           child: Stack(
             children: [
               // Main content
@@ -72,15 +65,14 @@ class _welcomePageState extends State<welcomePage> {
                     ),
                     // Description
                     Padding(
-                      padding: const EdgeInsets.only(top:50.0),
+                      padding: const EdgeInsets.only(top: 50.0),
                       child: const Text(
                         "Engage In Effective, Interactive Learning ",
                         textAlign: TextAlign.center,
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                     ),
-                     
                   ],
                 ),
               ),
@@ -88,8 +80,7 @@ class _welcomePageState extends State<welcomePage> {
               if (_isLoading)
                 Center(
                   child: Container(
-                  margin: EdgeInsets.only(top:50),
-                     
+                    margin: EdgeInsets.only(top: 50),
                     child: Center(
                       child: CircularProgressIndicator(
                         valueColor:

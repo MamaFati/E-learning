@@ -3,7 +3,8 @@ class main_courses {
   final String ImagePath;
   final String Description;
   final bool isFree;
-  double rating;
+  final double? price;
+  final double rating;
 
   main_courses({
     required this.courseName,
@@ -11,6 +12,7 @@ class main_courses {
     this.rating = 0.0,
     required this.isFree,
     required this.Description,
+    this.price,
   });
 }
 

@@ -4,6 +4,8 @@ import 'package:e_learning/component/square_tile.dart';
 import 'package:e_learning/component/textArea.dart';
 import 'package:e_learning/pages/HomePage.dart';
 import 'package:e_learning/pages/sign_Out_Page.dart';
+import 'package:e_learning/services/auth_services.dart';
+import 'package:e_learning/theme/theme_data.dart';
 import 'package:flutter/material.dart';
 
 class SignInPage extends StatefulWidget {
@@ -14,14 +16,42 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  bool? isChecked = false;
+  // bool? isChecked = false;
   // Text Editing controllers
   final userNameControl = TextEditingController();
   final passwordControl = TextEditingController();
   final _controller = TextEditingController();
 
   // Sign user In
-  void signUserIn() {}
+  void signUserIn() async {
+    final response = await AuthService.loginUser(
+      userNameControl.text,
+      passwordControl.text,
+    );
+
+    if (response.statusCode == 200) {
+      // Navigate to the home page on successful login
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage(userName: '')),
+      );
+    } else {
+      // Show an error message if login fails
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Login Failed'),
+          content: Text('Invalid username or password.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +59,7 @@ class _SignInPageState extends State<SignInPage> {
       appBar: AppBar(backgroundColor: Color(0xFFFBFFFF)),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFFBFFFF), // Light cyan
-              Color(0xFFFFFFFF), // White
-              Color(0xFF9BE5DD), // Light turquoise
-            ],
-            end: Alignment.bottomCenter,
-            begin: Alignment.topLeft,
-          ),
+          gradient: AppGradients.mainGradient,
         ),
         width: double.infinity,
         child: Column(
@@ -62,12 +84,14 @@ class _SignInPageState extends State<SignInPage> {
                       hintText: 'USERNAME OR EMAIL',
                       controller: userNameControl,
                       obscureText: false,
+                      icon: Icons.person_outline,
                     ),
                     // user password
                     CustomTextArea(
                       hintText: 'PASSWORD',
                       controller: passwordControl,
                       obscureText: true,
+                      icon: Icons.remove_red_eye,
                     ),
                     const SizedBox(height: 10),
                     // Row for remember me and forgot password
@@ -80,20 +104,20 @@ class _SignInPageState extends State<SignInPage> {
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Row(
                               children: [
-                                Checkbox(
-                                  tristate: true,
-                                  value: isChecked,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      isChecked = value;
-                                    });
-                                  },
-                                ),
+                                // Checkbox(
+                                //   tristate: true,
+                                //   value: isChecked,
+                                //   onChanged: (bool? value) {
+                                //     setState(() {
+                                //       isChecked = value;
+                                //     });
+                                //   },
+                                // ),
                                 // Text
-                                const Text(
-                                  "REMEMBER ME",
-                                  style: TextStyle(),
-                                ),
+                                // const Text(
+                                //   "REMEMBER ME",
+                                //   style: TextStyle(),
+                                // ),
                               ],
                             ),
                           ),
@@ -125,13 +149,7 @@ class _SignInPageState extends State<SignInPage> {
                       child: CustomButton(
                         text: "LOG IN",
                         color: Colors.green[400]!,
-                        onTap:  () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                     
-                      );
-                         }
+                        onTap: signUserIn,
                       ),
                     ),
                     // OR#####
@@ -180,7 +198,7 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(),
+                      padding: EdgeInsets.only(top: 30.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

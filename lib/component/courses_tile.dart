@@ -1,9 +1,14 @@
 import 'package:e_learning/pages/detailedPages/digitalMarketingPage.dart';
 import 'package:e_learning/pages/detailedPages/FullStackPage.dart';
+import 'package:e_learning/theme/theme_data.dart';
+import 'package:e_learning/utils/add_to_wishList_btn.dart';
+import 'package:e_learning/utils/courses_Description.dart';
+import 'package:e_learning/utils/courses_Images.dart';
+import 'package:e_learning/utils/courses_name.dart';
+import 'package:e_learning/utils/courses_status.dart';
+import 'package:e_learning/utils/rating_star.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:e_learning/models/course.dart';
- 
 
 class CoursesTile extends StatelessWidget {
   final main_courses course;
@@ -23,14 +28,14 @@ class CoursesTile extends StatelessWidget {
       onTap: () {
         navigateToDetailPage(context, course);
       },
-      child:  SingleChildScrollView(
+      child: SingleChildScrollView(
         child: Container(
           width: isAllCoursesPage
               ? double.infinity
-              : 300, // Full width for row layout
+              : 290, // Full width for row layout
           margin: EdgeInsets.all(8.0),
           decoration: BoxDecoration(
-            color: isAllCoursesPage ? Colors.white : Colors.grey[100],
+            color: isAllCoursesPage ? Colors.white : AppColors.lightCyan,
             borderRadius: BorderRadius.circular(12.0),
             boxShadow: [
               BoxShadow(
@@ -42,7 +47,7 @@ class CoursesTile extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(10.0),
             child: isAllCoursesPage ? buildRowLayout() : buildColumnLayout(),
           ),
         ),
@@ -76,83 +81,29 @@ class CoursesTile extends StatelessWidget {
   Widget buildRowLayout() {
     return Row(
       children: [
-        Image.asset(
-          course.ImagePath,
+        CourseImage(
+          imagePath: course.ImagePath,
           height: 100.0,
           width: 100.0,
-          fit: BoxFit.cover,
         ),
         SizedBox(width: 5.0),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Course name
-              Text(
-                course.courseName,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0,
-                ),
-              ),
-              // Description
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  course.Description,
-                  style: TextStyle(
-                    color: Colors.black87,
-                  ),
-                ),
-              ),
-              // Rating and Free/Paid status
+              CourseName(name: course.courseName),
+              CourseDescription(description: course.Description),
               Row(
                 children: [
-                  // Rating stars
-                  RatingBar.builder(
+                  RatingStars(
                     initialRating: course.rating,
-                    minRating: 1,
-                    direction: Axis.horizontal,
-                    allowHalfRating: true,
-                    itemCount: 5,
                     itemSize: 20.0,
-                    itemBuilder: (context, _) => Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                    ),
-                    onRatingUpdate: (rating) {
-                      print(rating);
-                    },
                   ),
-                  // Free/Paid status
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15.0),
-                    child: Text(
-                      course.isFree ? "Free" : "Paid",
-                      style: TextStyle(
-                        color: course.isFree ? Colors.green : Colors.red,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                  CourseStatus(
+                    isFree: course.isFree,
+                    price: course.price,
                   ),
-                  // Add button to enable user to add courses to their wish list
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: GestureDetector(
-                      onTap: onTap,
-                      child: Container(
-                          padding: EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(12),
-                                  bottomLeft: Radius.circular(12))),
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          )),
-                    ),
-                  ),
+                  AddToWishlistButton(onTap: onTap),
                 ],
               ),
             ],
@@ -166,63 +117,23 @@ class CoursesTile extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(
-          course.ImagePath,
-          height: 200.0,
+        CourseImage(
+          imagePath: course.ImagePath,
+          height: 90.0,
+          width: double.infinity,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        CourseName(name: course.courseName, fontSize: 18.0),
+        CourseDescription(
+            description: course.Description, textColor: Colors.grey),
+        Row(
           children: [
-            // Course name
-            Text(
-              course.courseName,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0,
-              ),
+            RatingStars(
+              initialRating: course.rating,
+              itemSize: 10.0,
             ),
-            // Description
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                course.Description,
-                style: TextStyle(
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-            SizedBox(height: 8.0),
-            // Rating and Free/Paid status
-            Row(
-              children: [
-                // Rating stars
-                RatingBar.builder(
-                  initialRating: course.rating,
-                  minRating: 1,
-                  direction: Axis.horizontal,
-                  allowHalfRating: true,
-                  itemCount: 5,
-                  itemSize: 20.0,
-                  itemBuilder: (context, _) => Icon(
-                    Icons.star,
-                    color: Colors.amber,
-                  ),
-                  onRatingUpdate: (rating) {
-                    print(rating);
-                  },
-                ),
-                // Free/Paid status
-                Padding(
-                  padding: const EdgeInsets.only(left: 15.0),
-                  child: Text(
-                    course.isFree ? "Free" : "Paid",
-                    style: TextStyle(
-                      color: course.isFree ? Colors.green : Colors.red,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
+            CourseStatus(
+              isFree: course.isFree,
+              price: course.price,
             ),
           ],
         ),

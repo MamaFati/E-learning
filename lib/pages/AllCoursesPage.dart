@@ -16,7 +16,7 @@ class _allCoursesState extends State<allCourses> {
   Widget build(BuildContext context) {
     // add courses to wishlist
     void addItemToWishList(main_courses courses) {
-      Provider.of<courseModel>(context, listen: false)
+      Provider.of<Coursesmodel>(context, listen: false)
           .addCoursesToWishList(courses);
       //  Show massage to user when courses are added to wishList
       showDialog(
@@ -27,7 +27,7 @@ class _allCoursesState extends State<allCourses> {
         ),
       );
     }
-    var courses = Provider.of<courseModel>(context).getCoursesList(true);
+    var courses = Provider.of<Coursesmodel>(context).getCoursesList(true);
 
     return Scaffold(
       appBar: AppBar(

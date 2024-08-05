@@ -111,7 +111,7 @@ class FullStackDetailPage extends StatelessWidget {
                   color: const Color.fromARGB(255, 1, 138, 156),
                   onTap: () {
                     // Add the course to the wishlist
-                    Provider.of<courseModel>(context, listen: false)
+                    Provider.of<Coursesmodel>(context, listen: false)
                         .addCoursesToWishList(course);
 
                     // Navigate to FullStackCourses page (or any other page)

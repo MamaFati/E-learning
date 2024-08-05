@@ -51,19 +51,19 @@ class _SliderPageState extends State<SliderPage> {
                 controller: _pageController,
                 children: [
                   SlideTile(
-                    imagepath: 'lib/assets/images1/GFGFG 1.png',
+                    imagepath: 'lib/assets/images1/pngwing.com.png',
                     header: "Fascinated Learning",
                     text:
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tempor lorem at bibendum mattis. In hac habitasse platea dictumst.",
                   ),
                   SlideTile(
-                    imagepath: 'lib/assets/images1/GFGFG 1.png',
+                    imagepath: 'lib/assets/images1/slideImage1.png',
                     header: "Empower your learning",
                     text:
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tempor lorem at bibendum mattis. In hac habitasse platea dictumst.",
                   ),
                   SlideTile(
-                    imagepath: 'lib/assets/images1/GFGFG 1.png',
+                    imagepath: 'lib/assets/images1/62863d8ca245d.png',
                     header: "Explore Our New Courses",
                     text:
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tempor lorem at bibendum mattis. In hac habitasse platea dictumst.",
@@ -113,7 +113,10 @@ class _SliderPageState extends State<SliderPage> {
                       MaterialPageRoute(builder: (context) => SignInPage()),
                     );
                   },
-                  child: Text("Next"))
+                  child: Text(
+                    "Next",
+                    style: TextStyle(color: AppColors.lightTurquoise),
+                  ))
             ],
           )
         ],
@@ -133,7 +136,8 @@ class _SliderPageState extends State<SliderPage> {
           width: _currentPage == index ? 20.0 : 12.0,
           height: _currentPage == index ? 20.0 : 12.0,
           decoration: BoxDecoration(
-            color: _currentPage == index ? Colors.black : Colors.grey,
+            color:
+                _currentPage == index ? AppColors.lightTurquoise : Colors.grey,
             shape: BoxShape.circle,
           ),
         ),

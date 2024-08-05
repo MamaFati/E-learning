@@ -12,13 +12,13 @@ class WishListPage extends StatefulWidget {
 
 class _WishListPageState extends State<WishListPage> {
   void removeCoursesFromWishList(main_courses course) {
-    Provider.of<courseModel>(context, listen: false)
+    Provider.of<Coursesmodel>(context, listen: false)
         .removeCoursesFromWishList(course);
   }
 
   @override
   Widget build(BuildContext context) {
-    var wishlist = Provider.of<courseModel>(context).userWish;
+    var wishlist = Provider.of<Coursesmodel>(context).userWish;
 
     return Scaffold(
       body: Container(

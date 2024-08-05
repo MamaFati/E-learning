@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => courseModel(),
+          create: (context) => Coursesmodel(),
         ),
         ChangeNotifierProvider(
           create: (context) => CourseRepository(),

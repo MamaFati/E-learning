@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:e_learning/component/bottoms.dart';
 import 'package:e_learning/component/textArea.dart';
 import 'package:e_learning/pages/HomePage.dart';
 import 'package:e_learning/pages/sign_In_Page.dart';
-import 'package:flutter/material.dart';
+import 'package:e_learning/services/auth_services.dart';
+import 'package:e_learning/theme/theme_data.dart';
 
 class SignOutPage extends StatefulWidget {
   const SignOutPage({super.key});
@@ -12,118 +14,161 @@ class SignOutPage extends StatefulWidget {
 }
 
 class _SignOutPageState extends State<SignOutPage> {
-  final userNameControl1 = TextEditingController();
-  final userLastNameControl = TextEditingController();
-  final userEmailControl = TextEditingController();
-  final userNumberControl = TextEditingController();
-  final userPasswordControl = TextEditingController();
-  final userConfirmPasswordControl = TextEditingController();
+  final TextEditingController userNameControl1 = TextEditingController();
+  final TextEditingController userLastNameControl = TextEditingController();
+  final TextEditingController userEmailControl = TextEditingController();
+  final TextEditingController userNumberControl = TextEditingController();
+  final TextEditingController userPasswordControl = TextEditingController();
+  final TextEditingController userConfirmPasswordControl =
+      TextEditingController();
+
+  void registerUser() async {
+    if (userPasswordControl.text == userConfirmPasswordControl.text) {
+      final response = await AuthService.registerUser(
+        userNameControl1.text,
+        userPasswordControl.text,
+        userEmailControl.text,
+      );
+
+      if (response.statusCode == 201) {
+        // Navigate to the home page with the user's name
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomePage(userName: userNameControl1.text),
+          ),
+        );
+      } else {
+        // Show an error message if registration fails
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Registration Failed'),
+            content: Text('Could not register user.'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: Text('OK'),
+              ),
+            ],
+          ),
+        );
+      }
+    } else {
+      // Show an error message if passwords do not match
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Password Mismatch'),
+          content: Text('Passwords do not match.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(backgroundColor: Color(0xFFFBFFFF)),
-        body: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Color(0xFFFBFFFF), // Light cyan
-              Color(0xFFFFFFFF), // White
-              Color(0xFF9BE5DD), // Light turquoise
-            ],
-            end: Alignment.bottomCenter,
-            begin: Alignment.topLeft,
-          )),
-          width: double.infinity,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const Text(
-                  "SIGN UP",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+      appBar: AppBar(backgroundColor: AppColors.lightCyan),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: AppGradients.mainGradient,
+        ),
+        width: double.infinity,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Text(
+                "SIGN UP",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              // Avatar Image
+              Image.asset('lib/assets/images1/GFGFG 1.png'),
+              // Text
+              const Text(
+                "CREATE A NEW ACCOUNT",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              // Input section
+              CustomTextArea(
+                hintText: 'FIRST NAME',
+                controller: userNameControl1,
+                obscureText: false,
+                icon: Icons.person_outline,
+              ),
+              CustomTextArea(
+                hintText: 'LAST NAME',
+                controller: userLastNameControl,
+                obscureText: false,
+                icon: Icons.person_outline,
+              ),
+              CustomTextArea(
+                hintText: 'EMAIL',
+                controller: userEmailControl,
+                obscureText: false,
+                icon: Icons.mail_rounded,
+              ),
+              CustomTextArea(
+                hintText: 'PHONE NUMBER',
+                controller: userNumberControl,
+                obscureText: false,
+                icon: Icons.phone,
+              ),
+              CustomTextArea(
+                hintText: 'PASSWORD',
+                controller: userPasswordControl,
+                obscureText: true,
+                icon: Icons.remove_red_eye,
+              ),
+              CustomTextArea(
+                hintText: 'CONFIRM PASSWORD',
+                controller: userConfirmPasswordControl,
+                obscureText: true,
+                icon: Icons.remove_red_eye,
+              ),
+              // Button
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30.0),
+                child: CustomButton(
+                  text: "SIGN UP",
+                  color: const Color.fromARGB(255, 1, 138, 156),
+                  onTap: registerUser,
                 ),
-                //  Avator Image
-                Image.asset('lib/assets/images1/GFGFG 1.png'),
-                // text
-                const Text(
-                  "CREATE A NEW ACCOUNT",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                // Input section
-                CustomTextArea(
-                  hintText: 'FRISTNAME',
-                  controller: userNameControl1,
-                  obscureText: false,
-                ),
-                CustomTextArea(
-                  hintText: 'LASTNAME',
-                  controller: userLastNameControl,
-                  obscureText: false,
-                ),
-                CustomTextArea(
-                  hintText: 'EMAIL',
-                  controller: userEmailControl,
-                  obscureText: false,
-                ),
-
-                CustomTextArea(
-                  hintText: 'PHONE NUMBER',
-                  controller: userNumberControl,
-                  obscureText: false,
-                ),
-                CustomTextArea(
-                  hintText: 'PASSWORD',
-                  controller: userPasswordControl,
-                  obscureText: true,
-                ),
-                CustomTextArea(
-                  hintText: 'CONFIRM PASSWORD',
-                  controller: userConfirmPasswordControl,
-                  obscureText: true,
-                ),
-                // buttom
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 30.0),
-                  child: CustomButton(
-                    text: "SIGN UP",
-                    color: const Color.fromARGB(255, 1, 138, 156),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                      );
-                    },
-                  ),
-                ),
-                //
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("ALREADY HAVE ACCOUNT?"),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignInPage()),
-                          );
-                        },
-                        child: const Text(
-                          " SIGN IN",
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: Colors.blue,
-                          ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("ALREADY HAVE AN ACCOUNT?"),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignInPage()),
+                        );
+                      },
+                      child: const Text(
+                        " SIGN IN",
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.blue,
                         ),
                       ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

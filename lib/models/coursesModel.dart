@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:e_learning/models/course.dart';
 
-class courseModel extends ChangeNotifier {
+class Coursesmodel extends ChangeNotifier {
   List<main_courses> courseShop = [
     main_courses(
       courseName: "Full Stack software Developer with a Portfolio",
@@ -9,6 +9,7 @@ class courseModel extends ChangeNotifier {
       Description: "Meta Professional Certificate",
       rating: 4.8,
       isFree: true,
+      price: 0.00,
     ),
     main_courses(
       courseName: "Become A Digital Marketer, With Mentorship ",
@@ -17,6 +18,7 @@ class courseModel extends ChangeNotifier {
       Description: "IBM Professional Certificate",
       rating: 4.9,
       isFree: false,
+      price: 50.00,
     ),
     main_courses(
       courseName: "Fundermentals Of Cyber security",
@@ -24,6 +26,7 @@ class courseModel extends ChangeNotifier {
       Description: "Google Professional Certificate",
       rating: 4.6,
       isFree: true,
+      price: 0.00,
     ),
     main_courses(
       courseName: "Design Learning Innovation (Graphic Design)",
@@ -31,88 +34,100 @@ class courseModel extends ChangeNotifier {
       Description: "IBM Professional Certificate",
       rating: 4.8,
       isFree: true,
+      price: 0.00,
     ),
   ];
+
+  List<main_courses> recommendedCourses = [
+    main_courses(
+      courseName: "Advanced Data Science",
+      ImagePath: 'lib/assets/images1/Ellipse 1 (1).png',
+      Description: "Coursera Professional Certificate",
+      rating: 4.7,
+      isFree: false,
+      price: 90.00,
+    ),
+    main_courses(
+      courseName: "Introduction to Machine Learning",
+      ImagePath: 'lib/assets/images1/Ellipse 1 (2).png',
+      Description: "edX Professional Certificate",
+      rating: 4.5,
+      isFree: true,
+      price: 0.00,
+    ),
+    main_courses(
+      courseName: "Introduction to AI",
+      ImagePath: 'lib/assets/images1/Ellipse 1 (3).png',
+      Description: "edX Professional Certificate",
+      rating: 4.5,
+      isFree: true,
+      price: 0.00,
+    ),
+    main_courses(
+      courseName: "Data Structures and Algorithms",
+      ImagePath: 'lib/assets/images1/Ellipse 1 (4).png',
+      Description: "edX Professional Certificate",
+      rating: 4.5,
+      isFree: true,
+      price: 0.00,
+    ),
+    main_courses(
+      courseName: "Database Management Systems",
+      ImagePath: 'lib/assets/images1/Ellipse 1 (5).png',
+      Description: "edX Professional Certificate",
+      rating: 4.5,
+      isFree: false,
+      price: 10.00,
+    ),
+    main_courses(
+      courseName: "Network Security",
+      ImagePath: 'lib/assets/images1/Ellipse 1.png',
+      Description: "edX Professional Certificate",
+      rating: 4.5,
+      isFree: true,
+      price: 0.00,
+    ),
+  ];
+
   // if isAllCoursesPage Display this
   List<main_courses> getCoursesList(bool isAllCoursesPage) {
     if (isAllCoursesPage) {
-      return [
-        ...courseShop,
-        main_courses(
-          courseName: "Advanced Data Science",
-          ImagePath: 'lib/assets/images1/Ellipse 1 (1).png',
-          Description: "Coursera Professional Certificate",
-          rating: 4.7,
-          isFree: false,
-        ),
-        main_courses(
-          courseName: "Introduction to Machine Learning",
-          ImagePath: 'lib/assets/images1/Ellipse 1 (2).png',
-          Description: "edX Professional Certificate",
-          rating: 4.5,
-          isFree: true,
-        ),
-        main_courses(
-          courseName: "Introduction to Machine Learning",
-          ImagePath: 'lib/assets/images1/Ellipse 1 (3).png',
-          Description: "edX Professional Certificate",
-          rating: 4.5,
-          isFree: true,
-        ),
-        main_courses(
-          courseName: "Introduction to Machine Learning",
-          ImagePath: 'lib/assets/images1/Ellipse 1 (4).png',
-          Description: "edX Professional Certificate",
-          rating: 4.5,
-          isFree: true,
-        ),
-        main_courses(
-          courseName: "Introduction to Machine Learning",
-          ImagePath: 'lib/assets/images1/Ellipse 1 (5).png',
-          Description: "edX Professional Certificate",
-          rating: 4.5,
-          isFree: true,
-        ),
-        main_courses(
-          courseName: "Introduction to Machine Learning",
-          ImagePath: 'lib/assets/images1/Ellipse 1.png',
-          Description: "edX Professional Certificate",
-          rating: 4.5,
-          isFree: true,
-        ),
-      ];
+      return courseShop + recommendedCourses;
     } else {
       return courseShop;
     }
   }
-
-  // void addCourse(main_courses course) {
-  //   courseShop.add(course);
-  //   notifyListeners();
-  // }
-  // get list of all couses
-  List<main_courses> userWish = [];
-  // get cart
-  List<main_courses> getWishList() {
-    return getCoursesList(true);
+  // get Limit
+  List<main_courses> getLimitedRecommendedCourses(int limit) {
+    return recommendedCourses.take(limit).toList();
   }
 
-  List<main_courses> getWishCart() {
+  // Get list of recommended courses
+  List<main_courses> getRecommendedCourses() {
+    return recommendedCourses;
+  }
+
+  // List for user wish list
+  List<main_courses> userWish = [];
+
+  // Get wishlist
+  List<main_courses> getWishList() {
     return userWish;
   }
 
-// Add Courses to whishlist
+  // Add courses to wishlist
   void addCoursesToWishList(main_courses course) {
     userWish.add(course);
     notifyListeners();
   }
 
-// remove items from cart
+  // Remove courses from wishlist
   void removeCoursesFromWishList(main_courses course) {
     userWish.remove(course);
     notifyListeners();
   }
-  // get selected courses
+
+  // Get selected courses
   void getSelectedCourses(main_courses course) {
     userWish.add(course);
     notifyListeners();

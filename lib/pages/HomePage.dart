@@ -2,11 +2,14 @@ import 'package:e_learning/component/bottom_nav_bar.dart';
 import 'package:e_learning/pages/accountPage.dart';
 import 'package:e_learning/pages/courses.dart';
 import 'package:e_learning/pages/myCourses.dart';
+import 'package:e_learning/pages/search_page.dart';
 import 'package:e_learning/pages/wishlist.dart';
+import 'package:e_learning/theme/theme_data.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String userName;
+  HomePage({super.key, required this.userName});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -28,18 +31,33 @@ class _HomePageState extends State<HomePage> {
     coursesPage(),
     myCourse(),
     WishListPage(),
+    SearchPage(),
     profilePage(),
+   
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: AppColors.lightCyan,
       bottomNavigationBar: MyButtomNavBar(
         onTabChange: (index) => navigatedBottomBar(index),
       ),
       body: _pages[_selectedIndex],
       appBar: AppBar(
-        backgroundColor: Color(0xFFFBFFFF),
+        title: Text("Hello : ${widget.userName}"),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.notifications_active),
+            tooltip: 'Comment Icon',
+            onPressed: () {},
+          ), //IconButton
+          IconButton(
+            icon: const Icon(Icons.settings),
+            tooltip: 'Setting Icon',
+            onPressed: () {},
+          ), //IconButton
+        ],
+        backgroundColor: AppColors.lightCyan,
       ),
     );
   }
