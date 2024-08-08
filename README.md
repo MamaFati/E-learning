@@ -1,22 +1,20 @@
-# e_learning
-
-A new Flutter project.
-
-## Getting Started
-
-![Screenshot (195)](https://github.com/MamaFati/E-learning/assets/104836963/b1271191-591d-4332-8717-ca87ee77c37f)
-![Screenshot (196)](https://github.com/MamaFati/E-learning/assets/104836963/13d27d9b-2a85-4606-970a-9b058a8ce36e)
-![Screenshot (197)](https://github.com/MamaFati/E-learning/assets/104836963/10a5b7f3-4ad6-472a-97f7-2a3f897dc14a)
-![Screenshot (198)](https://github.com/MamaFati/E-learning/assets/104836963/994ff48b-796e-4f13-90ab-95285c8f4691)
-![Screenshot (199)](https://github.com/MamaFati/E-learning/assets/104836963/f85baee5-a4b8-4097-99f9-4136814c95aa)
-
-# 05-07-2024
-
-Made some changes to the sign-In page and also added firebase for user logging with google, X and Apple account
-###
-![Screenshot (207)](https://github.com/user-attachments/assets/38e1ff75-4951-4796-8d73-2ab6da5f215f)
-![Screenshot (208)](https://github.com/user-attachments/assets/636ffca0-ebbf-4e39-84a0-90652a657b20)
-####
-![Screenshot (210)](https://github.com/user-attachments/assets/3a525047-de36-4b88-bbcc-83c7395cbdb6)
-![Screenshot (212)](https://github.com/user-attachments/assets/c4872431-9670-4c56-8e24-3a2d4e905992)
-![Screenshot_20240719-210601](https://github.com/user-attachments/assets/c7194324-d69c-4923-b4a1-c14ae024edf6)
+## Project screenshoot
+![Screenshot (212)](https://github.com/user-attachments/assets/5bc00e0b-96b8-42d9-8f03-b8f0b4bbe90e)
+![Screenshot (213)](https://github.com/user-attachments/assets/b1572613-ab4c-411e-9b45-8c47c8a2a83a)
+![Screenshot (216)](https://github.com/user-attachments/assets/a548b81a-1fea-408e-bf89-85703d0a2320)
+![Screenshot (217)](https://github.com/user-attachments/assets/18f0f059-845d-435a-b879-ef95e8b38756)
+![Screenshot (219)](https://github.com/user-attachments/assets/760e959a-11a0-4151-9d43-a6e243cf08dc)
+![Screenshot (220)](https://github.com/user-attachments/assets/3f8cf54e-0b36-40af-a448-3058796d20a7)
+![Screenshot (221)](https://github.com/user-attachments/assets/5943d579-fee1-4801-9a7f-d11b5cfedfe4)
+![Screenshot (222)](https://github.com/user-attachments/assets/6fd30657-4a77-4707-a992-de0f40d4cbf2)
+![Screenshot (223)](https://github.com/user-attachments/assets/33ac2e61-2b77-4fe9-9620-9f3b70829c16)
+![Screenshot (224)](https://github.com/user-attachments/assets/931f16eb-7c8a-4196-bcdd-2dd041fa6fa6)
+![Screenshot (225)](https://github.com/user-attachments/assets/36474ee8-7448-4be6-aa8c-7f2dfc84121d)
+![Screenshot (226)](https://github.com/user-attachments/assets/e8b0eb2f-3d09-4528-a5c0-d11f88cb0a2b)
+![Screenshot (227)](https://github.com/user-attachments/assets/bd6816bd-163b-464e-bac7-e5cad81d900e)
+![Screenshot (228)](https://github.com/user-attachments/assets/c2cc282c-dcb7-44c4-9472-9ca4f6fa8ba9)
+![Screenshot (229)](https://github.com/user-attachments/assets/0ea3fe91-2444-4338-9482-37a80eadba85)
+![Screenshot (230)](https://github.com/user-attachments/assets/445befd8-8c79-4489-89c1-6bdc40394d34)
+![Screenshot (231)](https://github.com/user-attachments/assets/b2164124-fbb4-4723-a0f3-da426196f19d)
+![Screenshot (232)](https://github.com/user-attachments/assets/dccc2607-ccfd-492c-b6d6-2e00cee6348c)
+![Screenshot (233)](https://github.com/user-attachments/assets/d8891445-4628-4710-9ba0-03672c9fc3c1)
