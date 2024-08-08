@@ -1,6 +1,7 @@
 import 'package:e_learning/component/bottoms.dart';
 import 'package:e_learning/models/course.dart';
 import 'package:e_learning/pages/sign_Out_Page.dart';
+import 'package:e_learning/theme/theme_data.dart';
 import 'package:flutter/material.dart';
 
 class digitalMarketingPage extends StatelessWidget {
@@ -29,19 +30,11 @@ class digitalMarketingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(course.courseName),
-        backgroundColor: Color(0xFFFBFFFF),
+        backgroundColor: AppColors.lightCyan,
       ),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFFBFFFF), // Light cyan
-              Color(0xFFFFFFFF), // White
-              Color(0xFF9BE5DD), // Light turquoise
-            ],
-            end: Alignment.bottomCenter,
-            begin: Alignment.topLeft,
-          ),
+        gradient: AppGradients.mainGradient,
         ),
         child: SingleChildScrollView(
           child: Padding(

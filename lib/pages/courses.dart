@@ -1,5 +1,4 @@
 import 'package:e_learning/component/courses_tile.dart';
-
 import 'package:e_learning/models/course.dart';
 import 'package:e_learning/models/coursesModel.dart';
 import 'package:e_learning/pages/AllCoursesPage.dart';
@@ -21,6 +20,8 @@ class _couresePageState extends State<coursesPage> {
     Provider.of<Coursesmodel>(context, listen: false)
         .addCoursesToWishList(course);
   }
+
+  bool showAll = false;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +77,7 @@ class _couresePageState extends State<coursesPage> {
                       return CoursesTile(
                         course: course,
                         isAllCoursesPage: false,
-                        onTap: () => addItemToWishList(course),
+                        // onTap: () => addItemToWishList(course),
                       );
                     }),
                   ),

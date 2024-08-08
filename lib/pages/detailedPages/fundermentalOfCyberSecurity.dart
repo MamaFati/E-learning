@@ -1,27 +1,31 @@
 import 'package:e_learning/component/bottoms.dart';
+import 'package:e_learning/component/payment_screen.dart';
+import 'package:e_learning/component/paypalpayment_screen.dart';
 import 'package:e_learning/models/course.dart';
-import 'package:e_learning/pages/sign_Out_Page.dart';
+import 'package:e_learning/theme/theme_data.dart';
+import 'package:e_learning/utils/courses_brief.dart';
+import 'package:e_learning/utils/fqa_tile.dart';
 import 'package:flutter/material.dart';
 
 class fundermentalOfCyberPage extends StatelessWidget {
   final main_courses course;
   fundermentalOfCyberPage({super.key, required this.course});
   // frequently asked dropdwon
-  final List<Map<String, String>> faqList = [
-    {
-      "question": "What is this course about?",
-      "answer":
-          "This course covers full stack development including front-end and back-end technologies."
-    },
-    {
-      "question": "How long is the course?",
-      "answer": "The course duration is 12 weeks."
-    },
-    {
-      "question": "Is there a certification?",
-      "answer": "Yes, you will receive a certification upon completion."
-    },
-    // Add more questions and answers as needed
+  final List<FAQ> faqList = [
+    FAQ(
+      question: "What is this course about?",
+      answer:
+          "This course covers full stack development including front-end and back-end technologies.",
+    ),
+    FAQ(
+      question: "How long is the course?",
+      answer: "The course duration is 12 weeks.",
+    ),
+    FAQ(
+      question: "Is there a certification?",
+      answer: "Yes, you will receive a certification upon completion.",
+    ),
+     
   ];
 
   @override
@@ -29,19 +33,11 @@ class fundermentalOfCyberPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(course.courseName),
-        backgroundColor: Color(0xFFFBFFFF),
+        backgroundColor: AppColors.lightCyan,
       ),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFFBFFFF), // Light cyan
-              Color(0xFFFFFFFF), // White
-              Color(0xFF9BE5DD), // Light turquoise
-            ],
-            end: Alignment.bottomCenter,
-            begin: Alignment.topLeft,
-          ),
+          gradient: AppGradients.mainGradient,
         ),
         child: SingleChildScrollView(
           child: Padding(
@@ -85,34 +81,26 @@ class fundermentalOfCyberPage extends StatelessWidget {
                     ),
                   ],
                 ),
+                CoursesBrief(
+                  totalTiming: '120 hours',
+                  totalVideos: 70,
+                  accessibility: 'Lifetime Access',
+                  uploadDate: '2023-1-03',
+                ),
                 SizedBox(height: 16),
                 Text(
                   "Frequently Asked Questions",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: faqList.length,
-                  itemBuilder: (context, index) {
-                    return ExpansionTile(
-                      title: Text(faqList[index]["question"]!),
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text(faqList[index]["answer"]!),
-                        ),
-                      ],
-                    );
-                  },
-                ),
+                FAQList(faqs: faqList),
                 CustomButton(
-                  text: "ENROLL",
+                  text: "Pay",
                   color: const Color.fromARGB(255, 1, 138, 156),
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SignOutPage()),
+                      MaterialPageRoute(
+                          builder: (context) => PaymentOptionsScreen()),
                     );
                   },
                 ),

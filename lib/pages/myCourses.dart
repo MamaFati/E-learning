@@ -1,3 +1,4 @@
+import 'package:e_learning/theme/theme_data.dart';
 import 'package:flutter/material.dart';
  
 
@@ -36,15 +37,7 @@ class _myCourseState extends State<myCourse> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFFBFFFF), // Light cyan
-              Color(0xFFFFFFFF), // White
-              Color(0xFF9BE5DD), // Light turquoise
-            ],
-            end: Alignment.bottomCenter,
-            begin: Alignment.topLeft,
-          ),
+          gradient: AppGradients.mainGradient,
         ),
         child: Column(
           children: [

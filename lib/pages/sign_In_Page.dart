@@ -104,23 +104,11 @@ class _SignInPageState extends State<SignInPage> {
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Row(
                               children: [
-                                // Checkbox(
-                                //   tristate: true,
-                                //   value: isChecked,
-                                //   onChanged: (bool? value) {
-                                //     setState(() {
-                                //       isChecked = value;
-                                //     });
-                                //   },
-                                // ),
-                                // Text
-                                // const Text(
-                                //   "REMEMBER ME",
-                                //   style: TextStyle(),
-                                // ),
+                                 
                               ],
                             ),
                           ),
+                         
                           InkWell(
                             onTap: () {
                               Navigator.push(

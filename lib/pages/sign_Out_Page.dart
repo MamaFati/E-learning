@@ -1,3 +1,4 @@
+import 'package:e_learning/utils/tap_link.dart';
 import 'package:flutter/material.dart';
 import 'package:e_learning/component/bottoms.dart';
 import 'package:e_learning/component/textArea.dart';
@@ -147,21 +148,23 @@ class _SignOutPageState extends State<SignOutPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text("ALREADY HAVE AN ACCOUNT?"),
-                    InkWell(
+                    SignInLink(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => SignInPage()),
                         );
                       },
-                      child: const Text(
-                        " SIGN IN",
+                      text: "SIGN IN",
                         style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: Colors.blue,
-                        ),
+                          fontSize: 16, // Customize font size
+                          fontWeight: FontWeight.bold, // Customize font weight
+                        
                       ),
                     ),
+                     
                   ],
                 ),
               ),

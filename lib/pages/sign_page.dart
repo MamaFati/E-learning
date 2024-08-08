@@ -1,6 +1,7 @@
 import 'package:e_learning/component/bottoms.dart';
 import 'package:e_learning/pages/sign_In_Page.dart';
 import 'package:e_learning/pages/sign_Out_Page.dart';
+import 'package:e_learning/theme/theme_data.dart';
 import 'package:flutter/material.dart';
 
 class signPage extends StatelessWidget {
@@ -12,15 +13,8 @@ class signPage extends StatelessWidget {
       appBar: AppBar(backgroundColor: Color(0xFFFBFFFF)),
       body: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-          colors: [
-            Color(0xFFFBFFFF), // Light cyan
-            Color(0xFFFFFFFF), // White
-            Color(0xFF9BE5DD), // Light turquoise
-          ],
-          end: Alignment.bottomCenter,
-          begin: Alignment.topLeft,
-        )),
+          gradient: AppGradients.mainGradient,
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 30.0),
           child: Column(

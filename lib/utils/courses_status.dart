@@ -12,7 +12,7 @@ class CourseStatus extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 15.0),
       child: Text(
-        isFree ? "Free" : "Paid: \$${price?.toStringAsFixed(2) ?? ''}",
+        isFree ? "Free" : "\$${price?.toStringAsFixed(2) ?? ''}",
         style: TextStyle(
           color: isFree ? Colors.green : Colors.red,
           fontWeight: FontWeight.bold,

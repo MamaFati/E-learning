@@ -1,3 +1,8 @@
+import 'package:e_learning/theme/theme_data.dart';
+import 'package:e_learning/utils/courses_status.dart';
+import 'package:e_learning/utils/navigation.dart';
+import 'package:e_learning/utils/rating_star.dart';
+import 'package:e_learning/utils/tap_link.dart';
 import 'package:flutter/material.dart';
 import 'package:e_learning/models/course.dart';
 
@@ -12,7 +17,7 @@ class RecommendeCoursesTile extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.0),
-        color: Colors.white,
+        color: AppColors.lightCyan,
         boxShadow: [
           BoxShadow(
             color: Colors.black12,
@@ -27,7 +32,6 @@ class RecommendeCoursesTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 100.0,
               width: double.infinity,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
@@ -45,11 +49,36 @@ class RecommendeCoursesTile extends StatelessWidget {
                 fontSize: 16.0,
               ),
             ),
-            SizedBox(height: 4.0),
+            SizedBox(height: 10.0),
             Text(
               course.Description,
               style: TextStyle(
                 color: Colors.black87,
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Row(
+              children: [
+                RatingStars(
+                  initialRating: course.rating,
+                  itemSize: 10.0,
+                ),
+                CourseStatus(
+                  isFree: course.isFree,
+                  price: course.price,
+                ),
+              ],
+            ),
+            SignInLink(
+              onTap: () {
+                Navigation.navigateToDetailPage(context, course);
+              },
+              text: "MORE",
+              style: TextStyle(
+                decoration: TextDecoration.underline,
+                color: Colors.blue,
+                fontSize: 10, // Customize font size
+                // fontWeight: FontWeight.bold, // Customize font weight
               ),
             ),
           ],

@@ -1,6 +1,7 @@
 import 'package:e_learning/component/courses_tile.dart';
 import 'package:e_learning/models/course.dart';
 import 'package:e_learning/models/coursesModel.dart';
+import 'package:e_learning/theme/theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,15 +37,7 @@ class _allCoursesState extends State<allCourses> {
       ),
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFFBFFFF), // Light cyan
-              Color(0xFFFFFFFF), // White
-              Color(0xFF9BE5DD), // Light turquoise
-            ],
-            end: Alignment.bottomCenter,
-            begin: Alignment.topLeft,
-          ),
+         gradient: AppGradients.mainGradient,
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -54,7 +47,7 @@ class _allCoursesState extends State<allCourses> {
               return CoursesTile(
                 course: courses[index],
                 isAllCoursesPage: true,
-                onTap: () => addItemToWishList(courses[index]),
+                // onTap: () => addItemToWishList(courses[index]),
               );
             },
           ),

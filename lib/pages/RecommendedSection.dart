@@ -19,17 +19,16 @@ class _RecommendedCoursesSectionState extends State<RecommendedCoursesSection> {
     final courseModel = Provider.of<Coursesmodel>(context);
     final recommendedCourses = showAll
         ? courseModel.getRecommendedCourses()
-        : courseModel.getLimitedRecommendedCourses(3);
+        : courseModel.getLimitedRecommendedCourses(4);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Text(
-            'Recommended Courses',
+            'Recommended',
             style: TextStyle(
               fontSize: 15.0,
-              // fontWeight: FontWeight.bold,
             ),
           ),
           //
@@ -46,19 +45,21 @@ class _RecommendedCoursesSectionState extends State<RecommendedCoursesSection> {
             ),
         ]),
         Container(
-          height: 500, // Adjust the height to fit your design
+          height: 400,
           child: GridView.builder(
             padding: EdgeInsets.all(8.0),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1, // Number of columns
-              childAspectRatio: 3 / 2, // Aspect ratio of each item
+              crossAxisCount: 2, // Number of columns
+              childAspectRatio: 1 / 2, // Aspect ratio of each item
               crossAxisSpacing: 10.0,
               mainAxisSpacing: 10.0,
             ),
             itemCount: recommendedCourses.length,
             itemBuilder: (context, index) {
-              return RecommendeCoursesTile(
-                course: recommendedCourses[index],
+              return Container(
+                child: RecommendeCoursesTile(
+                  course: recommendedCourses[index],
+                ),
               );
             },
           ),
