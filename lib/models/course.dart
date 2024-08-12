@@ -5,6 +5,7 @@ class main_courses {
   final bool isFree;
   final double? price;
   final double rating;
+  double progress;
 
   main_courses({
     required this.courseName,
@@ -13,7 +14,6 @@ class main_courses {
     required this.isFree,
     required this.Description,
     this.price,
+    this.progress = 0.00,
   });
 }
-
- 

@@ -1,6 +1,9 @@
-import 'package:e_learning/theme/theme_data.dart';
+import 'package:e_learning/component/myCoursesTile.dart';
 import 'package:flutter/material.dart';
- 
+import 'package:provider/provider.dart';
+import 'package:e_learning/models/coursesModel.dart';
+import 'package:e_learning/models/course.dart';
+import 'package:e_learning/theme/theme_data.dart';
 
 class myCourse extends StatefulWidget {
   const myCourse({super.key});
@@ -12,52 +15,23 @@ class myCourse extends StatefulWidget {
 class _myCourseState extends State<myCourse> {
   @override
   Widget build(BuildContext context) {
-    // var wishlist = Provider.of<courseModel>(context).getWishCart();
-    // Todo edit this UI to get the number of courses the user have started and display them on the timeline
-    // final List<Exercise> exercises = [
-    //   Exercise(
-    //     name: 'Push-ups',
-    //     calories: 100,
-    //     minutes: 10,
-    //     isCompleted: true,
-    //   ),
-    //   Exercise(
-    //     name: 'Jumping Jacks',
-    //     calories: 80,
-    //     minutes: 5,
-    //     isCompleted: false,
-    //   ),
-    //   Exercise(
-    //     name: 'Squats',
-    //     calories: 120,
-    //     minutes: 15,
-    //     isCompleted: false,
-    //   ),
-    // ];
+    final coursesModel = Provider.of<Coursesmodel>(context);
+    final List<main_courses> userCourses = coursesModel.getUserCourses();
+
     return Scaffold(
+       
       body: Container(
         decoration: const BoxDecoration(
           gradient: AppGradients.mainGradient,
         ),
-        child: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("My Courses"),
-                // child: ListView.builder(
-                //   itemCount: exercises.length,
-                //   itemBuilder: (context, index) {
-                //     return MyTimeline(
-                //       isFirst: index == 0,
-                //       isLast: index == exercises.length - 1,
-                //       exercise: exercises[index],
-                //     );
-                //   },
-                // ),
-              ),
-            ),
-          ],
+        child: ListView.builder(
+          padding: const EdgeInsets.all(8.0),
+          itemCount: userCourses.length,
+          itemBuilder: (context, index) {
+            final course = userCourses[index];
+            return MyCourseTile(
+                course: course); // Custom widget to display course
+          },
         ),
       ),
     );

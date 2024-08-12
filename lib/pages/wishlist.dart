@@ -1,5 +1,6 @@
 import 'package:e_learning/models/course.dart';
 import 'package:e_learning/models/coursesModel.dart';
+import 'package:e_learning/theme/theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,15 +24,7 @@ class _WishListPageState extends State<WishListPage> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFFBFFFF), // Light cyan
-              Color(0xFFFFFFFF), // White
-              Color(0xFF9BE5DD), // Light turquoise
-            ],
-            end: Alignment.bottomCenter,
-            begin: Alignment.topLeft,
-          ),
+          gradient: AppGradients.mainGradient,
         ),
         child: Column(
           children: [
@@ -59,16 +52,22 @@ class _WishListPageState extends State<WishListPage> {
                               spreadRadius: 2.0,
                               offset: Offset(0, 2),
                             ),
-                          ]  ),
+                          ]),
                       margin: EdgeInsets.only(bottom: 10),
                       child: ListTile(
                         leading: Image.asset(course.ImagePath),
                         title: Text(course.courseName),
                         subtitle: Text(course.isFree ? 'Free' : 'Paid'),
                         trailing: IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () => removeCoursesFromWishList(course),
-                        ),
+                            icon: Icon(Icons.delete),
+                            onPressed: () {
+                              removeCoursesFromWishList(course);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text(
+                                        '${course.courseName} removed from wishlist!')),
+                              );
+                            }),
                       ),
                     );
                   },

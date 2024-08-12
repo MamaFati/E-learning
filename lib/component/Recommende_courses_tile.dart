@@ -1,4 +1,5 @@
 import 'package:e_learning/theme/theme_data.dart';
+import 'package:e_learning/utils/add_to_wishList_btn.dart';
 import 'package:e_learning/utils/courses_status.dart';
 import 'package:e_learning/utils/navigation.dart';
 import 'package:e_learning/utils/rating_star.dart';
@@ -8,9 +9,13 @@ import 'package:e_learning/models/course.dart';
 
 class RecommendeCoursesTile extends StatelessWidget {
   final main_courses course;
+  final void Function()? onTap;
 
-  const RecommendeCoursesTile({Key? key, required this.course})
-      : super(key: key);
+  RecommendeCoursesTile({
+    Key? key,
+    required this.course,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -69,17 +74,23 @@ class RecommendeCoursesTile extends StatelessWidget {
                 ),
               ],
             ),
-            SignInLink(
-              onTap: () {
-                Navigation.navigateToDetailPage(context, course);
-              },
-              text: "MORE",
-              style: TextStyle(
-                decoration: TextDecoration.underline,
-                color: Colors.blue,
-                fontSize: 10, // Customize font size
-                // fontWeight: FontWeight.bold, // Customize font weight
-              ),
+            Row(
+              children: [
+                SignInLink(
+                  onTap: () {
+                    Navigation.navigateToDetailPage(context, course);
+                  },
+                  text: "MORE",
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    color: Colors.blue,
+                    fontSize: 10, // Customize font size
+                    // fontWeight: FontWeight.bold, // Customize font weight
+                  ),
+                ),
+                // fav Icon
+                AddToWishlistButton(onTap: onTap),
+              ],
             ),
           ],
         ),

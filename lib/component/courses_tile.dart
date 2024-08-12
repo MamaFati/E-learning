@@ -1,25 +1,26 @@
 import 'package:e_learning/theme/theme_data.dart';
-import 'package:e_learning/utils/add_to_wishList_btn.dart';
-import 'package:e_learning/utils/courses_Description.dart';
-import 'package:e_learning/utils/courses_Images.dart';
+import 'package:e_learning/utils/add_to_wishList_btn.dart'; // Ensure this file contains the AddToWishlistButton
+import 'package:e_learning/utils/courses_description.dart';
+import 'package:e_learning/utils/courses_images.dart';
 import 'package:e_learning/utils/courses_name.dart';
 import 'package:e_learning/utils/courses_status.dart';
 import 'package:e_learning/utils/navigation.dart';
 import 'package:e_learning/utils/rating_star.dart';
 import 'package:e_learning/utils/tap_link.dart';
+import 'package:e_learning/utils/wish_list_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:e_learning/models/course.dart';
 
 class CoursesTile extends StatelessWidget {
   final main_courses course;
   final bool isAllCoursesPage;
-  // void Function()? onTap;
+  final void Function()? onTap;
 
   CoursesTile({
     super.key,
     required this.course,
-    required this.isAllCoursesPage, 
-    // required this.onTap,
+    required this.isAllCoursesPage,
+    this.onTap,
   });
 
   @override
@@ -44,13 +45,15 @@ class CoursesTile extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: isAllCoursesPage ? buildRowLayout() : buildColumnLayout( context),
+          child: isAllCoursesPage
+              ? buildRowLayout(context)
+              : buildColumnLayout(context),
         ),
       ),
     );
   }
 
-  Widget buildRowLayout() {
+  Widget buildRowLayout(BuildContext context) {
     return Row(
       children: [
         CourseImage(
@@ -75,7 +78,8 @@ class CoursesTile extends StatelessWidget {
                     isFree: course.isFree,
                     price: course.price,
                   ),
-                  // AddToWishlistButton(onTap: onTap),
+                  // Add to wishlist button
+                  AddToWishlistButton(onTap: onTap),
                 ],
               ),
             ],
@@ -100,30 +104,36 @@ class CoursesTile extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-           Row(children: [
-             RatingStars(
-              initialRating: course.rating,
-              itemSize: 10.0,
+            Row(
+              children: [
+                RatingStars(
+                  initialRating: course.rating,
+                  itemSize: 10.0,
+                ),
+                CourseStatus(
+                  isFree: course.isFree,
+                  price: course.price,
+                ),
+              ],
             ),
-            CourseStatus(
-              isFree: course.isFree,
-              price: course.price,
-            ),
-           ],),
-           Row(children: [
-            SignInLink(
+            Row(
+              children: [
+                SignInLink(
                   onTap: () {
-                     Navigation.navigateToDetailPage(context, course);
+                    Navigation.navigateToDetailPage(context, course);
                   },
                   text: "MORE",
                   style: TextStyle(
-                    decoration: TextDecoration.underline,
+                    // decoration: TextDecoration.underline,
                     color: Colors.blue,
-                    fontSize: 16, // Customize font size
+                    fontSize: 14, // Customize font size
                     fontWeight: FontWeight.bold, // Customize font weight
                   ),
                 ),
-           ],)
+                SizedBox(width: 8.0), // Add space between the link and button
+                AddToWishlistButton(onTap: onTap), // Add to wishlist button
+              ],
+            ),
           ],
         ),
       ],

@@ -106,11 +106,8 @@ class PayPalPaymentScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // Handle Pay Now action
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Council'),
-                    ),
-                  );
+                  Navigator.pop(context);
+                  
                 },
                 child: Text(
                   'Council',

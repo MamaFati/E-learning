@@ -77,13 +77,21 @@ class _couresePageState extends State<coursesPage> {
                       return CoursesTile(
                         course: course,
                         isAllCoursesPage: false,
-                        // onTap: () => addItemToWishList(course),
+                        onTap: () {addItemToWishList(course);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                      '${course.courseName} added to wishlist!')),
+                            );
+                        } 
                       );
                     }),
                   ),
                 ),
                 //
-                RecommendedCoursesSection(),
+                RecommendedCoursesSection(
+                  
+                ),
               ],
             ),
           ),

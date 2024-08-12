@@ -9,7 +9,7 @@ class Coursesmodel extends ChangeNotifier {
       Description: "Meta Professional Certificate",
       rating: 4.8,
       isFree: true,
-      price: 0.00,
+      price: 0,
     ),
     main_courses(
       courseName: "Become A Digital Marketer, With Mentorship ",
@@ -18,7 +18,7 @@ class Coursesmodel extends ChangeNotifier {
       Description: "IBM Professional Certificate",
       rating: 4.9,
       isFree: false,
-      price: 50.00,
+      price: 50,
     ),
     main_courses(
       courseName: "Fundermentals Of Cyber security",
@@ -26,7 +26,7 @@ class Coursesmodel extends ChangeNotifier {
       Description: "Google Professional Certificate",
       rating: 4.6,
       isFree: true,
-      price: 0.00,
+      price: 0,
     ),
     main_courses(
       courseName: "Design Learning Innovation (Graphic Design)",
@@ -34,7 +34,7 @@ class Coursesmodel extends ChangeNotifier {
       Description: "IBM Professional Certificate",
       rating: 4.8,
       isFree: true,
-      price: 0.00,
+      price: 0,
     ),
   ];
 
@@ -45,7 +45,7 @@ class Coursesmodel extends ChangeNotifier {
       Description: "Coursera Professional Certificate",
       rating: 4.7,
       isFree: false,
-      price: 90.00,
+      price: 90,
     ),
     main_courses(
       courseName: "Introduction to Machine Learning",
@@ -53,7 +53,7 @@ class Coursesmodel extends ChangeNotifier {
       Description: "edX Professional Certificate",
       rating: 4.5,
       isFree: true,
-      price: 0.00,
+      price: 0,
     ),
     main_courses(
       courseName: "Introduction to AI",
@@ -61,7 +61,7 @@ class Coursesmodel extends ChangeNotifier {
       Description: "edX Professional Certificate",
       rating: 4.5,
       isFree: true,
-      price: 0.00,
+      price: 0,
     ),
     main_courses(
       courseName: "Data Structures and Algorithms",
@@ -69,7 +69,7 @@ class Coursesmodel extends ChangeNotifier {
       Description: "edX Professional Certificate",
       rating: 4.5,
       isFree: true,
-      price: 0.00,
+      price: 0,
     ),
     main_courses(
       courseName: "Database Management Systems",
@@ -77,7 +77,7 @@ class Coursesmodel extends ChangeNotifier {
       Description: "edX Professional Certificate",
       rating: 4.5,
       isFree: false,
-      price: 10.00,
+      price: 10,
     ),
     main_courses(
       courseName: "Network Security",
@@ -85,9 +85,27 @@ class Coursesmodel extends ChangeNotifier {
       Description: "edX Professional Certificate",
       rating: 4.5,
       isFree: true,
-      price: 0.00,
+      price: 0,
     ),
   ];
+  // Get user courses
+  List<main_courses> userCourses = [
+    // Example courses the user is involved with, you should replace this with actual user data
+    main_courses(
+      courseName: "Full Stack software Developer with a Portfolio",
+      ImagePath: 'lib/assets/images1/Web-Development-Download-PNG.png',
+      Description: "Meta Professional Certificate",
+      rating: 4.8,
+      isFree: true,
+      price: 0,
+      progress: 0.5, // Example progress value
+    ),
+    // Add more courses as needed
+  ];
+  List<main_courses> getUserCourses() {
+    // Return courses that the user is involved in
+    return userCourses;
+  }
 
   // if isAllCoursesPage Display this
   List<main_courses> getCoursesList(bool isAllCoursesPage) {
@@ -97,6 +115,7 @@ class Coursesmodel extends ChangeNotifier {
       return courseShop;
     }
   }
+
   // get Limit
   List<main_courses> getLimitedRecommendedCourses(int limit) {
     return recommendedCourses.take(limit).toList();
@@ -131,5 +150,21 @@ class Coursesmodel extends ChangeNotifier {
   void getSelectedCourses(main_courses course) {
     userWish.add(course);
     notifyListeners();
+  }
+
+  // Update course progress
+  void updateCourseProgress(main_courses course, double newProgress) {
+    final index =
+        courseShop.indexWhere((c) => c.courseName == course.courseName);
+    if (index != -1) {
+      courseShop[index].progress = newProgress;
+      notifyListeners();
+    }
+  }
+
+  // Get progress of a specific course
+  double getCourseProgress(main_courses course) {
+    final c = courseShop.firstWhere((c) => c.courseName == course.courseName);
+    return c.progress;
   }
 }

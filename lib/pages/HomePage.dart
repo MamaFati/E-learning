@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
     myCourse(),
     WishListPage(),
     SearchPage(),
-    profilePage(),
+    ProfilePage(),
    
   ];
   @override
