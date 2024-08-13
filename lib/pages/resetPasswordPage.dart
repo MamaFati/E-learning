@@ -1,5 +1,5 @@
 import 'package:e_learning/component/bottoms.dart';
-import 'package:e_learning/component/textArea.dart';
+import 'package:e_learning/component/text_area.dart';
 import 'package:e_learning/pages/sign_In_Page.dart';
 import 'package:flutter/material.dart';
 

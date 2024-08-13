@@ -1,8 +1,9 @@
 import 'package:e_learning/component/bottoms.dart';
-import 'package:e_learning/component/payment_screen.dart';
+// import 'package:e_learning/component/payment_screen.dart';
 import 'package:e_learning/models/course.dart';
 import 'package:e_learning/models/coursesModel.dart';
-import 'package:e_learning/pages/mainCoursesPages/fullStackDevalopmetCourses.dart';
+// import 'package:e_learning/pages/mainCoursesPages/fullStackDevalopmetCourses.dart';
+import 'package:e_learning/pages/success_message.dart';
 import 'package:e_learning/theme/theme_data.dart';
 import 'package:e_learning/utils/courses_brief.dart';
 import 'package:e_learning/utils/fqa_tile.dart';
@@ -97,18 +98,14 @@ class FullStackDetailPage extends StatelessWidget {
                 FAQList(faqs: faqList),
                 //
                 CustomButton(
-                  text: "PAY",
+                  text: "Enroll",
                   color: const Color.fromARGB(255, 1, 138, 156),
                   onTap: () {
-                    // Add the course to the wishlist
-                    // Provider.of<Coursesmodel>(context, listen: false)
-                    //     .addCoursesToWishList(course);
-
-                    // Navigate to FullStackCourses page (or any other page)
+                     
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => PaymentOptionsScreen()),
+                          builder: (context) => SuccessMessage(course:  course)),
                     );
                   },
                 ),

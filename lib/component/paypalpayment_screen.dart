@@ -1,9 +1,11 @@
+import 'package:e_learning/models/course.dart';
 import 'package:e_learning/pages/success_message.dart';
 import 'package:e_learning/theme/theme_data.dart';
 import 'package:flutter/material.dart';
 
 class PayPalPaymentScreen extends StatelessWidget {
-  const PayPalPaymentScreen({super.key});
+   final main_courses course;
+    PayPalPaymentScreen({super.key, required this.course});
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +88,7 @@ class PayPalPaymentScreen extends StatelessWidget {
                   //
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SuccessMessage()),
+                    MaterialPageRoute(builder: (context) => SuccessMessage(course: course)),
                   );
                 },
                 child: Text(
@@ -110,7 +112,7 @@ class PayPalPaymentScreen extends StatelessWidget {
                   
                 },
                 child: Text(
-                  'Council',
+                  'Councel',
                   style: TextStyle(color: AppColors.lightCyan),
                 ),
                 style: ElevatedButton.styleFrom(

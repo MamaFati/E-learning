@@ -6,14 +6,15 @@ class ChaptersTab extends StatefulWidget {
   final List<String> videoUrls;
   final List<bool> completed;
 
-  ChaptersTab({
-    Key? key,
+  const ChaptersTab({
+    super.key,
     required this.chapters,
     required this.videoUrls,
     required this.completed,
-  }) : super(key: key);
+  });
 
   @override
+  // ignore: library_private_types_in_public_api
   _ChaptersTabState createState() => _ChaptersTabState();
 }
 

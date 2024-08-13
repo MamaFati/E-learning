@@ -28,16 +28,17 @@ class _allCoursesState extends State<allCourses> {
         ),
       );
     }
+
     var courses = Provider.of<Coursesmodel>(context).getCoursesList(true);
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFFBFFFF),
+        backgroundColor: AppColors.lightCyan,
         title: Text('All Courses'),
       ),
       body: Container(
         decoration: BoxDecoration(
-         gradient: AppGradients.mainGradient,
+          gradient: AppGradients.mainGradient,
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -47,7 +48,7 @@ class _allCoursesState extends State<allCourses> {
               return CoursesTile(
                 course: courses[index],
                 isAllCoursesPage: true,
-                // onTap: () => addItemToWishList(courses[index]),
+                onTap: () => addItemToWishList(courses[index]),
               );
             },
           ),

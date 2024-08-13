@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:e_learning/component/creditCardPayment_section.dart';
 import 'package:e_learning/component/paypalpayment_screen.dart';
 import 'package:e_learning/theme/theme_data.dart';
+import 'package:e_learning/models/course.dart';
 
 class PaymentOptionsScreen extends StatefulWidget {
+  final main_courses course;
+
+  PaymentOptionsScreen({Key? key, required this.course}) : super(key: key);
+
   @override
   _PaymentOptionsScreenState createState() => _PaymentOptionsScreenState();
 }
@@ -26,7 +31,7 @@ class _PaymentOptionsScreenState extends State<PaymentOptionsScreen> {
         title: Text('Payment Options'),
       ),
       body: Container(
-         decoration: BoxDecoration(
+        decoration: BoxDecoration(
           gradient: AppGradients.mainGradient,
         ),
         child: Center(
@@ -70,7 +75,8 @@ class _PaymentOptionsScreenState extends State<PaymentOptionsScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => PayPalPaymentScreen()),
+                        builder: (context) =>
+                            PayPalPaymentScreen(course: widget.course)),
                   );
                 },
               ),
@@ -84,7 +90,8 @@ class _PaymentOptionsScreenState extends State<PaymentOptionsScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CreditCardPaymentScreen()),
+                        builder: (context) =>
+                            CreditCardPaymentScreen(course: widget.course)),
                   );
                 },
               ),

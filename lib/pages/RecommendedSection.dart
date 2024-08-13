@@ -2,7 +2,7 @@ import 'package:e_learning/models/course.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:e_learning/models/coursesModel.dart';
-import 'package:e_learning/component/Recommende_courses_tile.dart';
+import 'package:e_learning/component/recommende_courses_tile.dart';
 
 class RecommendedCoursesSection extends StatefulWidget {
   const RecommendedCoursesSection({super.key});

@@ -1,7 +1,7 @@
 import 'package:e_learning/component/bottoms.dart';
 import 'package:e_learning/component/dialogBox.dart';
 import 'package:e_learning/component/square_tile.dart';
-import 'package:e_learning/component/textArea.dart';
+import 'package:e_learning/component/text_area.dart';
 import 'package:e_learning/pages/HomePage.dart';
 import 'package:e_learning/pages/sign_Out_Page.dart';
 import 'package:e_learning/services/auth_services.dart';
@@ -91,7 +91,7 @@ class _SignInPageState extends State<SignInPage> {
                       hintText: 'PASSWORD',
                       controller: passwordControl,
                       obscureText: true,
-                      icon: Icons.remove_red_eye,
+                      icon: Icons.lock,
                     ),
                     const SizedBox(height: 10),
                     // Row for remember me and forgot password
@@ -103,12 +103,9 @@ class _SignInPageState extends State<SignInPage> {
                           Padding(
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Row(
-                              children: [
-                                 
-                              ],
+                              children: [],
                             ),
                           ),
-                         
                           InkWell(
                             onTap: () {
                               Navigator.push(

@@ -1,3 +1,4 @@
+// ignore: file_names
 // course_image.dart
 import 'package:flutter/material.dart';
 
@@ -6,7 +7,7 @@ class CourseImage extends StatelessWidget {
   final double height;
   final double width;
 
-  CourseImage({
+  const CourseImage({super.key, 
     required this.imagePath,
     required this.height,
     required this.width,

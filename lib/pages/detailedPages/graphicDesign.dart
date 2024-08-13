@@ -6,9 +6,9 @@ import 'package:e_learning/utils/courses_brief.dart';
 import 'package:e_learning/utils/fqa_tile.dart';
 import 'package:flutter/material.dart';
 
-class fundermentalOfCyberPage extends StatelessWidget {
+class DesignLearningInnovation extends StatelessWidget {
   final main_courses course;
-  fundermentalOfCyberPage({super.key, required this.course});
+  DesignLearningInnovation ({super.key, required this.course});
   // frequently asked dropdwon
   final List<FAQ> faqList = [
     FAQ(
@@ -18,13 +18,12 @@ class fundermentalOfCyberPage extends StatelessWidget {
     ),
     FAQ(
       question: "How long is the course?",
-      answer: "The course duration is 12 weeks.",
+      answer: "The course duration is 14 weeks.",
     ),
     FAQ(
       question: "Is there a certification?",
-      answer: " No certification is awarded",
+      answer: " Yes certification is awarded",
     ),
-     
   ];
 
   @override
@@ -81,10 +80,10 @@ class fundermentalOfCyberPage extends StatelessWidget {
                   ],
                 ),
                 CoursesBrief(
-                  totalTiming: '120 hours',
-                  totalVideos: 70,
+                  totalTiming: '170 hours',
+                  totalVideos: 60,
                   accessibility: 'Lifetime Access',
-                  uploadDate: '2023-1-03',
+                  uploadDate: '2022-7-07',
                 ),
                 SizedBox(height: 16),
                 Text(

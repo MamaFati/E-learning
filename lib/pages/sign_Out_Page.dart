@@ -1,7 +1,7 @@
 import 'package:e_learning/utils/tap_link.dart';
 import 'package:flutter/material.dart';
 import 'package:e_learning/component/bottoms.dart';
-import 'package:e_learning/component/textArea.dart';
+import 'package:e_learning/component/text_area.dart';
 import 'package:e_learning/pages/HomePage.dart';
 import 'package:e_learning/pages/sign_In_Page.dart';
 import 'package:e_learning/services/auth_services.dart';
@@ -125,13 +125,13 @@ class _SignOutPageState extends State<SignOutPage> {
                 hintText: 'PASSWORD',
                 controller: userPasswordControl,
                 obscureText: true,
-                icon: Icons.remove_red_eye,
+                icon: Icons.lock,
               ),
               CustomTextArea(
                 hintText: 'CONFIRM PASSWORD',
                 controller: userConfirmPasswordControl,
                 obscureText: true,
-                icon: Icons.remove_red_eye,
+                icon: Icons.lock,
               ),
               // Button
               Padding(
@@ -156,15 +156,13 @@ class _SignOutPageState extends State<SignOutPage> {
                         );
                       },
                       text: "SIGN IN",
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: Colors.blue,
-                          fontSize: 16, // Customize font size
-                          fontWeight: FontWeight.bold, // Customize font weight
-                        
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue,
+                        fontSize: 16, // Customize font size
+                        fontWeight: FontWeight.bold, // Customize font weight
                       ),
                     ),
-                     
                   ],
                 ),
               ),

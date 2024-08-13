@@ -1,4 +1,4 @@
-import 'package:e_learning/component/myCoursesTile.dart';
+import 'package:e_learning/component/my_courses_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:e_learning/models/coursesModel.dart';

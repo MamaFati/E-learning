@@ -11,11 +11,11 @@ class RecommendeCoursesTile extends StatelessWidget {
   final main_courses course;
   final void Function()? onTap;
 
-  RecommendeCoursesTile({
-    Key? key,
+  const RecommendeCoursesTile({
+    super.key,
     required this.course,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

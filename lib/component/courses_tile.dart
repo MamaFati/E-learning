@@ -1,5 +1,5 @@
 import 'package:e_learning/theme/theme_data.dart';
-import 'package:e_learning/utils/add_to_wishList_btn.dart'; // Ensure this file contains the AddToWishlistButton
+import 'package:e_learning/utils/add_to_wishList_btn.dart';  
 import 'package:e_learning/utils/courses_description.dart';
 import 'package:e_learning/utils/courses_images.dart';
 import 'package:e_learning/utils/courses_name.dart';
@@ -32,7 +32,7 @@ class CoursesTile extends StatelessWidget {
             : 290, // Full width for row layout
         margin: EdgeInsets.all(8.0),
         decoration: BoxDecoration(
-          color: isAllCoursesPage ? Colors.white : AppColors.lightCyan,
+          color: isAllCoursesPage ? AppColors.lightCyan: AppColors.lightCyan,
           borderRadius: BorderRadius.circular(12.0),
           boxShadow: [
             BoxShadow(
@@ -72,7 +72,7 @@ class CoursesTile extends StatelessWidget {
                 children: [
                   RatingStars(
                     initialRating: course.rating,
-                    itemSize: 20.0,
+                    itemSize: 10.0,
                   ),
                   CourseStatus(
                     isFree: course.isFree,
@@ -80,6 +80,18 @@ class CoursesTile extends StatelessWidget {
                   ),
                   // Add to wishlist button
                   AddToWishlistButton(onTap: onTap),
+                  SignInLink(
+                    onTap: () {
+                      Navigation.navigateToDetailPage(context, course);
+                    },
+                    text: "MORE",
+                    style: TextStyle(
+                      // decoration: TextDecoration.underline,
+                      color: Colors.blue,
+                      fontSize: 10, // Customize font size
+                      fontWeight: FontWeight.bold, // Customize font weight
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -114,6 +126,7 @@ class CoursesTile extends StatelessWidget {
                   isFree: course.isFree,
                   price: course.price,
                 ),
+                
               ],
             ),
             Row(

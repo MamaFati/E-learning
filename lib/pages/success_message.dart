@@ -1,9 +1,13 @@
-import 'package:e_learning/component/course_page.dart';
-import 'package:e_learning/pages/mainCoursesPages/fullStackDevalopmetCourses.dart';
+// import 'package:e_learning/component/course_page.dart';
+import 'package:e_learning/models/course.dart';
+// import 'package:e_learning/pages/mainCoursesPages/fullStackDevalopmetCourses.dart';
+import 'package:e_learning/utils/navigation.dart';
 import 'package:flutter/material.dart';
 
 class SuccessMessage extends StatefulWidget {
-  const SuccessMessage({super.key});
+  final main_courses course;
+
+  SuccessMessage({super.key, required this.course});
 
   @override
   _SuccessMessageState createState() => _SuccessMessageState();
@@ -15,11 +19,7 @@ class _SuccessMessageState extends State<SuccessMessage> {
     super.initState();
     // Navigate to the next page after a delay
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) => FullStackCourses()), // Replace with your next page
-      );
+      Navigation.navigateTomainCoursesPage(context, widget.course); 
     });
   }
 
